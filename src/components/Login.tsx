@@ -14,7 +14,7 @@ const Login: React.FC = () => {
     event?.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      // Signed in
+     
       const user = userCredential.user;
       console.log(user);
      
