@@ -42,16 +42,16 @@ export const navLinks2 = [
         title: "My Wallet",
     },
     {
-        id: "Buy",
-        title: "Buy",
+        id: "Profile",
+        title: "Profile",
     },
     {
-        id: "Send",
-        title: "Send",
+        id: "Notifications",
+        title: "Notifications",
     },
     {
-        id: "History",
-        title: "History",
+        id: "Settings",
+        title: "Settings",
     },
 ];
 export const features = [

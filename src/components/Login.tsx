@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import coin from "/src/assets/coin.jpg";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { auth } from "../firebase";
 
 const Login: React.FC = () => {
@@ -14,21 +14,21 @@ const Login: React.FC = () => {
     event?.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-     
+
       const user = userCredential.user;
       console.log(user);
-     
+
     } catch (error) {
      console.log(error);
     }
   };
 
   return (
-    <section className="gradient-form h-full bg-white">
+    <section className="gradient-form h-full bg-primary">
     <div className="container h-full p-10">
-        <div className="g-6 flex h-full flex-wrap items-center justify-center text-black ">
+        <div className="g-6 flex h-full flex-wrap items-center justify-center text-white ">
             <div className="w-full">
-                <div className="block rounded-lg  shadow-lg bg-white">
+                <div className="block rounded-lg  shadow-lg bg-primary">
                     <div className="g-0 lg:flex lg:flex-wrap">
                         <div className="px-4 md:px-0 lg:w-6/12">
                             <div className="md:mx-6 md:p-12">
@@ -43,7 +43,7 @@ const Login: React.FC = () => {
                                     </h4>
                                 </div>
                                 <form>
-                                    <p className="mb-4 text-black">Please login to your account</p>
+                                    <p className="mb-4 text-white">Please login to your account</p>
                                     <div className="relative mb-4" data-te-input-wrapper-init>
                                         <input
                                             type="text"
@@ -86,13 +86,19 @@ const Login: React.FC = () => {
                                         >
                                             Log in
                                         </button><br/>
-                                        <a href="#!">Forgot password?</a>
+
+                                        <button className=" text-white bg-primary">
+                                            <Link to="/CreateWallet" >
+                                               No account? Register here
+                                            </Link>
+                                        </button>
+
                                     </div>
-                               
+
                                 </form>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

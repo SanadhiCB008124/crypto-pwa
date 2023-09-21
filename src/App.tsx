@@ -2,15 +2,18 @@ import './App.css';
 import styles from './style.tsx';
 
 import Navbar from "./components/Navbar.tsx";
-import Home from "./components/Home.tsx"; // Import your Home component
+import Home from "./components/Home/Home.tsx"; // Import your Home component
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Send from "./components/Send.tsx";
 import Swap from "./components/Swap.tsx";
 import Buy from "./components/Buy.tsx";
 import Recieve from "./components/Recieve.tsx";
-import MobileNav from "./components/MobileNav.tsx";
+
 import Banner from "./components/Banner.tsx";
+import MobileNav from "./components/MobileNav.tsx";
+import Login from "./components/Login.tsx";
+import CreateWallet from "./components/CreateWallet.tsx";
 
 
 function App() {
@@ -26,8 +29,7 @@ function App() {
                     </div>
 
                 </div>
-             
-              <MobileNav/>
+                <MobileNav/>
 
                 <div className={`bg-primary ${styles.flexStart}`}>
                     <div className={`${styles.boxWidth}`}>
@@ -37,6 +39,8 @@ function App() {
                             <Route path="/swap" element={<Swap />} />
                             <Route path="/buy" element={<Buy />} />
                             <Route path="/receive" element={<Recieve />} />
+                            <Route path="/login" element={<Login/>} />
+                            <Route path="/createWallet" element={<CreateWallet/>} />
                         </Routes>
                     </div>
                 </div>

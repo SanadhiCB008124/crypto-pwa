@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route,  } from 'react-router-dom';
 
-import Home from './components/Home';
+import Home from './components/Home/Home.tsx';
 import Send from './components/Send';
 import Buy from './components/Buy';
 
