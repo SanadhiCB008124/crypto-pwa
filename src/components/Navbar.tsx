@@ -12,7 +12,7 @@ export default function Navbar() {
 
     return (
         <nav className="w-full flex py-6 justify-between items-center navbar">
-            <img src={logo} alt="BitWallet" className="w-[55px] h-[39px] rounded-full mt-2" />
+            <img src={logo} alt="BitWallet" className="w-[39px] h-[39px] rounded-full " />
 
             <ul className="list-none sm:flex hidden justify-end items-center flex-1">
                 {navLinks2.map((nav, index) => (
@@ -39,14 +39,14 @@ export default function Navbar() {
                 <div
                     className={`${
                         !toggle ? "hidden" : "flex"
-                    } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
+                    } p-6 bg-white absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
                 >
                     <ul className="list-none flex justify-end items-start flex-1 flex-col">
                         {navLinks2.map((nav, index) => (
                             <li
                                 key={nav.id}
                                 className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                                    active === nav.title ? "text-white" : "text-dimWhite"
+                                    active === nav.title ? "text-black" : "text-black"
                                 } ${index === navLinks2.length - 1 ? "mb-0" : "mb-4"}`}
                                 onClick={() => setActive(nav.title)}
                             >

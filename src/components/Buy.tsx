@@ -45,11 +45,13 @@ const Buy = () => {
     return (
 
     <div className=" bg-primary">
+        <div className="ml-3 mr-3">
+            <SearchBar />
+        </div>
 
             <Grid container spacing={2} columns={16}>
                 <Grid xs={8}>
                     <div className='m-10'>
-                        <SearchBar />
                     </div>
                 </Grid>
                 <Grid xs={8}>
