@@ -4,6 +4,7 @@ import { firestore } from '../firebase'; // Import the initialized Firestore ins
 import Banner from './Banner';
 import { Grid } from '@mui/material';
 import SearchBar from './SearchBar';
+import MobileNav from "./MobileNav.tsx";
 
 const Buy = () => {
   const [cryptos, setCryptos] = useState([]);
@@ -32,8 +33,9 @@ const Buy = () => {
   }, []); // Empty dependency array ensures this effect runs once when the component mounts
 
   return (
+
     <div className=" bg-primary">
-          
+
             <Grid container spacing={2} columns={16}>
                 <Grid xs={8}>
                     <div className='m-10'>
@@ -60,7 +62,7 @@ const Buy = () => {
                 </Grid>
             </Grid>
     <div className='m-10'>
-      <h2 >Cryptocurrencies</h2>
+      <h2 className="text-primary-500">Cryptocurrencies</h2>
       <ul role="list" className="divide-ymt-10">
         {cryptos.map((crypto) => (
           <li key={crypto.id} className="flex justify-between gap-x-6 py-5">

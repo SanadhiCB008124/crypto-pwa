@@ -14,7 +14,7 @@ const Navbar2 = () => {
 
     return (
         <nav className="w-full flex py-6 justify-between items-center navbar">
-            <img src={logo} alt="BitWallet" className="w-[115px] h-[39px]" />
+            <img src={logo} alt="BitWallet" className="w-[115px] h-[39px] rounded-full" />
 
             <ul className="list-none sm:flex hidden justify-end items-center flex-1">
                 {navLinks.map((nav, index) => (

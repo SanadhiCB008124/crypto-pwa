@@ -27,7 +27,7 @@ const MobileNav: React.FC = () => {
                         <label>Buy</label>
                     </Link>
                 </button>
-                {/*} <button className=" text-white bg-primary">
+                {/*}  <button className=" text-white bg-primary">
                     <Link to="/login" >
                        login
                     </Link>

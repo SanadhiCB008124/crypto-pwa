@@ -12,7 +12,7 @@ export default function Navbar() {
 
     return (
         <nav className="w-full flex py-6 justify-between items-center navbar">
-            <img src={logo} alt="BitWallet" className="w-[55px] h-[39px]" />
+            <img src={logo} alt="BitWallet" className="w-[55px] h-[39px] rounded-full mt-2" />
 
             <ul className="list-none sm:flex hidden justify-end items-center flex-1">
                 {navLinks2.map((nav, index) => (

@@ -3,12 +3,15 @@ import bgImg from "../assets/Hero.png";
 import bgImg2 from "../assets/bg3.jpg"
 
 import styles from "../style.tsx";
+import MobileNav from "./MobileNav.tsx";
+import React from "react";
 
 function Send() {
     return (
         <div>
 
             <div className="relative min-h-screen grid bg-primary">
+
                 <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0">
 
                     <div

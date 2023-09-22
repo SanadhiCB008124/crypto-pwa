@@ -1,9 +1,11 @@
 import React from 'react';
 import SidePanel from "./SidePanel.tsx";
+import MobileNav from "../MobileNav.tsx";
 
 const Dashboard: React.FC = () => {
     return (
         <main className="">
+
             <div className="grid mb-4 pb-10 px-8 mx-4 rounded-3xl bg-primary">
                 <div className="grid grid-cols-12 gap-6">
                     <div className="grid grid-cols-12 col-span-12 gap-6 xxl:col-span-9">
@@ -11,58 +13,79 @@ const Dashboard: React.FC = () => {
                             <div className="flex items-center h-10 intro-y">
                                 <h2 className="mr-5 text-lg font-medium truncate">Dashboard</h2>
                             </div>
+                            <div
+                                className="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y"
+
+                            >
+                                <div className="p-5 text-white rounded "
+                                     style={{
+                                         background:' linear-gradient(0deg, rgba(28,17,29,1) 0%, rgba(49,16,73,1) 91%)'
+                                     }}
+                                >
+                                    <div className="mt-3 text-3xl text-base font-bold leading-8">Your Wallet Balance</div>
+                                    <div className="flex justify-between ">
+
+                                        <div className="mt-3 text-3xl leading-8 text-white">$ 6, 200.34</div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
 
                             <div className="grid grid-cols-12 gap-6 mt-5">
                                 <a
-                                    className="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white"
+                                    className="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y "
                                     href="#"
                                 >
-                                    <div className="p-5">
-                                        <div className="flex justify-between">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                                            </svg>
-                                            <div className="bg-green-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
-                                                <span className="flex items-center">30%</span>
-                                            </div>
+                                    <div className="p-5 text-white rounded "
+                                    style={{
+                                        background:' linear-gradient(0deg, rgba(28,17,29,1) 0%, rgba(49,16,73,1) 91%)'
+  }}
+                                    >
+                                        <div className="flex justify-between ">
+
+                                            <div className="mt-3 text-3xl leading-8 text-white">Bitcoin</div>
+
+                                            <div className="mt-3 text-3xl text-base font-bold leading-8">$ 6, 200.34</div>
+
                                         </div>
                                         <div className="ml-2 w-full flex-1">
                                             <div>
-                                                <div className="mt-3 text-3xl font-bold leading-8">4.510</div>
-                                                <div className="mt-1 text-base text-gray-600">Income</div>
+                                                    <div className="mt-1 text-base ">ETH</div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
 
                                 <a
-                                    className="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white"
+                                    className="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y "
                                     href="#"
                                 >
-                                    <div className="p-5">
-                                        <div className="flex justify-between">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                                            </svg>
-                                            <div className="bg-green-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
-                                                <span className="flex items-center">30%</span>
-                                            </div>
+                                    <div className="p-5 text-white rounded "
+                                         style={{
+                                             background:' linear-gradient(0deg, rgba(28,17,29,1) 0%, rgba(49,16,73,1) 91%)'
+                                         }}
+                                    >
+                                        <div className="flex justify-between ">
+
+                                            <div className="mt-3 text-3xl  leading-8 text-white">Ethereum</div>
+
+                                            <div className="mt-3 text-3xl text-base font-bold leading-8">$ 2,123.02</div>
+
                                         </div>
                                         <div className="ml-2 w-full flex-1">
                                             <div>
-                                                <div className="mt-3 text-3xl font-bold leading-8">4.510</div>
-                                                <div className="mt-1 text-base text-gray-600">Expenses</div>
+                                                <div className="mt-1 text-base ">BTC</div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-
-
 
                             </div>
                         </div>
 
-                        <div className="col-span-12 mt-5">
+                        {/*}  <div className="col-span-12 mt-5">
                             <div className="grid gap-2 grid-cols-1 lg:grid-cols-1">
                                 <div className="bg-white p-4 shadow-lg rounded-lg">
                                     <h1 className="font-bold text-base">Recent Transactions</h1>
@@ -130,7 +153,7 @@ const Dashboard: React.FC = () => {
                                                                     </div>
                                                                 </td>
                                                             </tr>
-                                                            {/* Repeat rows for more data */}
+
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -140,7 +163,7 @@ const Dashboard: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*/}
                     </div>
                 </div>
             </div>
