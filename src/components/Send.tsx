@@ -32,17 +32,17 @@ function Send() {
                                         <input
                                             type="text"
                                             placeholder="Send to"
-                                            className="border rounded-lg py-3 px-3 mt-4 bg-black border-purple-600 placeholder-white-500 text-white"
+                                            className="border rounded-lg py-3 px-3 mt-4 bg-black border-primary-500 placeholder-white-500 text-white"
                                         />
                                         <label className="font-bold text-lg text-white">Amount</label>
                                         <input
                                             type="text"
                                             placeholder="amount"
-                                            className="border rounded-lg py-3 px-3 bg-black border-purple-600 placeholder-white-500 text-white"
+                                            className="border rounded-lg py-3 px-3 bg-black border-primary-500 placeholder-white-500 text-white"
                                         />
 
                                         <button
-                                            className="border border-indigo-600 bg-purple-400 text-white rounded-lg py-3 font-semibold"
+                                            className="border border-primary-500 bg-green-950 text-white rounded-lg py-3 font-semibold"
                                             // onClick={onSubmit} // You can add your form submission logic here
                                         >
                                             Continue

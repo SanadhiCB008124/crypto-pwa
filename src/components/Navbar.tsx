@@ -46,7 +46,7 @@ export default function Navbar() {
                             <li
                                 key={nav.id}
                                 className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                                    active === nav.title ? "text-black" : "text-black"
+                                    active === nav.title ? "text-black underline" : "text-primary-300 no-underline"
                                 } ${index === navLinks2.length - 1 ? "mb-0" : "mb-4"}`}
                                 onClick={() => setActive(nav.title)}
                             >

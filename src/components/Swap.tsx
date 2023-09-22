@@ -1,5 +1,5 @@
 
-import bgImg from "../assets/Ethereum.png";
+
 import styles from "../style.tsx";
 import bgImg2 from "../assets/bg3.jpg"
 
@@ -17,7 +17,6 @@ function Swap() {
                         }}
                     >
 
-
                         <div className="lg:text-left text-center">
                             <div className="flex items-center justify-center">
                                 <div className="bg-primary flex flex-col w-80 border border-gray-900 rounded-lg px-8 py-10">
@@ -31,17 +30,17 @@ function Swap() {
                                         <input
                                             type="text"
                                             placeholder="Send to"
-                                            className="border rounded-lg py-3 px-3 mt-4 bg-black border-purple-600 placeholder-white-500 text-white"
+                                            className="border rounded-lg py-3 px-3 mt-4 bg-black border-primary-500  placeholder-white-500 text-white"
                                         />
                                         <label className="font-bold text-lg text-white">To:</label>
                                         <input
                                             type="text"
                                             placeholder="amount"
-                                            className="border rounded-lg py-3 px-3 bg-black border-purple-600 placeholder-white-500 text-white"
+                                            className="border rounded-lg py-3 px-3 bg-black border-primary-500  placeholder-white-500 text-white"
                                         />
 
                                         <button
-                                            className="border border-indigo-600 bg-purple-400 text-white rounded-lg py-3 font-semibold"
+                                            className="border border-primary-500 bg-green-950 text-white rounded-lg py-3 font-semibold"
                                             // onClick={onSubmit} // You can add your form submission logic here
                                         >
                                             Continue

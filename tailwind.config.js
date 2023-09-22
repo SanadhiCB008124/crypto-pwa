@@ -10,10 +10,10 @@ export default {
         "gray-20":"#F8F4EB",
         "gray-50":"#EFE6E6",
         "gray-190":"#DFCCCC",
-        "primary":"#000000",
+        "primary":"#090f0e",
         "primary-300":"#1F0B24",
-        "primary-500":"#FFF2FF",
-        "secondary-400":"#FFCD58",
+        "primary-500":"#2de0c2",
+        "secondary-400":"#976CE1",
         "secondary-500":"#FFC132",
       },
       backgroundImage: theme => ({

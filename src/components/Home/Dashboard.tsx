@@ -1,5 +1,5 @@
 import React from 'react';
-
+import  bitcoin from "../../assets/ethereum.png";
 const Dashboard: React.FC = () => {
     return (
         <main className="">
@@ -8,17 +8,13 @@ const Dashboard: React.FC = () => {
                 <div className="grid grid-cols-12 gap-6">
                     <div className="grid grid-cols-12 col-span-12 gap-6 xxl:col-span-9">
                         <div className="col-span-12 mt-8">
-                            <div className="flex items-center h-10 intro-y">
-                                <h2 className="mr-5 text-lg font-medium truncate">Dashboard</h2>
-                            </div>
+
                             <div
                                 className="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y"
 
                             >
-                                <div className="p-5 text-white rounded "
-                                     style={{
-                                         background:' linear-gradient(0deg, rgba(28,17,29,1) 0%, rgba(49,16,73,1) 91%)'
-                                     }}
+                                <div className="p-5 text-primary-500 rounded bg-black"
+
                                 >
                                     <div className="mt-3 text-3xl text-base font-bold leading-8">Your Wallet Balance</div>
                                     <div className="flex justify-between ">
@@ -36,13 +32,11 @@ const Dashboard: React.FC = () => {
                                     className="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y "
                                     href="#"
                                 >
-                                    <div className="p-5 text-white rounded "
-                                    style={{
-                                        background:' linear-gradient(0deg, rgba(28,17,29,1) 0%, rgba(49,16,73,1) 91%)'
-  }}
+                                    <div className="p-5 text-white rounded bg-black"
+
                                     >
                                         <div className="flex justify-between ">
-
+                                            <img src={bitcoin} alt={bitcoin} className="h-12 w-12 flex-none rounded-full bg-primary"/>
                                             <div className="mt-3 text-3xl leading-8 text-white">Bitcoin</div>
 
                                             <div className="mt-3 text-3xl text-base font-bold leading-8">$ 6, 200.34</div>
@@ -50,7 +44,7 @@ const Dashboard: React.FC = () => {
                                         </div>
                                         <div className="ml-2 w-full flex-1">
                                             <div>
-                                                    <div className="mt-1 text-base ">ETH</div>
+                                                    <div className="mt-1 text-base ">BTC</div>
                                             </div>
                                         </div>
                                     </div>
@@ -60,12 +54,11 @@ const Dashboard: React.FC = () => {
                                     className="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y "
                                     href="#"
                                 >
-                                    <div className="p-5 text-white rounded "
-                                         style={{
-                                             background:' linear-gradient(0deg, rgba(28,17,29,1) 0%, rgba(49,16,73,1) 91%)'
-                                         }}
+                                    <div className="p-5 text-white rounded bg-black "
+
                                     >
                                         <div className="flex justify-between ">
+                                            <img src={bitcoin} alt={bitcoin} className="h-12 w-12 flex-none rounded-full bg-primary"/>
 
                                             <div className="mt-3 text-3xl  leading-8 text-white">Ethereum</div>
 
@@ -74,7 +67,7 @@ const Dashboard: React.FC = () => {
                                         </div>
                                         <div className="ml-2 w-full flex-1">
                                             <div>
-                                                <div className="mt-1 text-base ">BTC</div>
+                                                <div className="mt-1 text-base ">ETH</div>
                                             </div>
                                         </div>
                                     </div>

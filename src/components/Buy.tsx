@@ -49,30 +49,7 @@ const Buy = () => {
             <SearchBar />
         </div>
 
-            <Grid container spacing={2} columns={16}>
-                <Grid xs={8}>
-                    <div className='m-10'>
-                    </div>
-                </Grid>
-                <Grid xs={8}>
-      <div className="dropdown dropdown-bottom dropdown-end  absolute  mb-10 mr-4 right-0">
-                        <label tabIndex={0} className="btn m-10 bg-primary-300  text-white hover:bg-white hover:text-primary-300">
-                            Currency
-                        </label>
-                        <ul
-                            tabIndex={0}
-                            className="dropdown-content z-[1] menu p-2 shadow text-black bg-white rounded-box w-52"
-                        >
-                            <li>
-                                <a>USD</a>
-                            </li>
-                            <li>
-                                <a>AUD</a>
-                            </li>
-                        </ul>
-                    </div>
-                </Grid>
-            </Grid>
+
     <div className='m-10'>
       <h2 className="text-primary-500">Cryptocurrencies</h2>
       <ul role="list" className="divide-ymt-10">
