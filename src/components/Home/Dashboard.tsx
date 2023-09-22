@@ -1,6 +1,4 @@
 import React from 'react';
-import SidePanel from "./SidePanel.tsx";
-import MobileNav from "../MobileNav.tsx";
 
 const Dashboard: React.FC = () => {
     return (

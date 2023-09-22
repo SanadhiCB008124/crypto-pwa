@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { auth } from "../firebase";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import  coin from "/src/assets/coin.jpg"
 import {Link} from "react-router-dom";
 import bgImg2 from "../assets/bg3.jpg";
@@ -22,9 +22,7 @@ const CreateWallet: React.FC = () => {
       
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
+        console.log(error.message)
       });
 
     }

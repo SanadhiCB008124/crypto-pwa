@@ -1,10 +1,8 @@
 
-import bgImg from "../assets/Hero.png";
+
 import bgImg2 from "../assets/bg3.jpg"
 
 import styles from "../style.tsx";
-import MobileNav from "./MobileNav.tsx";
-import React from "react";
 
 function Send() {
     return (

@@ -10,7 +10,6 @@ import Swap from "./components/Swap.tsx";
 import Buy from "./components/Buy.tsx";
 import Recieve from "./components/Recieve.tsx";
 
-import Banner from "./components/Banner.tsx";
 import MobileNav from "./components/MobileNav.tsx";
 import Login from "./components/Login.tsx";
 import CreateWallet from "./components/CreateWallet.tsx";

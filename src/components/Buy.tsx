@@ -1,29 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../firebase'; // Import the initialized Firestore instance
-import Banner from './Banner';
+
 import { Grid } from '@mui/material';
 import SearchBar from './SearchBar';
-import MobileNav from "./MobileNav.tsx";
 
+
+type Crypto = {
+    id: string;
+    name: string; // Add the 'name' property here (and other properties you have)
+    symbol: string;
+    price: number;
+    image: string;
+
+};
 const Buy = () => {
-  const [cryptos, setCryptos] = useState([]);
+    const [cryptos, setCryptos] = useState<Crypto[]>([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(firestore, 'cryptocurrencies'));
-        const cryptoData: ((prevState: never[]) => never[]) | { id: string; }[] = [];
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(firestore, 'cryptocurrencies'));
+                const cryptoData: Crypto[] = [];
 
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          cryptoData.push({
-            id: doc.id,
-            ...data,
-          });
-        });
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data() as Crypto; // Cast data as Crypto type
 
-        setCryptos(cryptoData);
+                    cryptoData.push({
+                        ...data, // Remove 'id' from here
+                    });
+                });
+
+
+          setCryptos(cryptoData);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -32,7 +41,8 @@ const Buy = () => {
     fetchData();
   }, []); // Empty dependency array ensures this effect runs once when the component mounts
 
-  return (
+
+    return (
 
     <div className=" bg-primary">
 
