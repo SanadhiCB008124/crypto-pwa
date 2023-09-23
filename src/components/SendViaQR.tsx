@@ -8,7 +8,7 @@ const SendViaQR:React.FC=() => {
                 <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0">
 
                     <div
-                        className="relative sm:w-1/2 xl:w-3/5 bg-primary h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden text-white bg-no-repeat bg-cover relative"
+                        className=" sm:w-1/2 xl:w-3/5 bg-primary h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden text-white bg-no-repeat bg-cover relative"
                         style={{
                             backgroundImage: `url(${bgImg})`,
                             backgroundSize: "50% auto",

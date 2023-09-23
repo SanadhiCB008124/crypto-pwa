@@ -3,7 +3,7 @@ const SideNav: React.FC = () => {
 
 
     return (
-        <div className={` w-80  bg-white h-full sidebar h-screen  `}>
+        <div className={` w-80  bg-white sidebar h-screen  `}>
             <div className="text-black-100 text-xl">
 
                 <div className="my-2 bg-black-600 h-[1px]"></div>
