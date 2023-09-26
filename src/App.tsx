@@ -1,19 +1,5 @@
+import  { useState } from 'react';
 import './App.css';
-import styles from './style.tsx';
-
-import Navbar from "./components/Navbar.tsx";
-import Home from "./components/Home/Home.tsx"; // Import your Home component
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import Send from "./components/Send.tsx";
-import Swap from "./components/Swap.tsx";
-import Buy from "./components/Buy.tsx";
-import Recieve from "./components/Recieve.tsx";
-
-import MobileNav from "./components/MobileNav.tsx";
-import Login from "./components/Login.tsx";
-import CreateWallet from "./components/CreateWallet.tsx";
-
 
 const constraints = {
     video: {
@@ -27,44 +13,60 @@ const constraints = {
             ideal: 1080,
             max: 1440,
         },
-        facingMode: 'user'
+        facingMode: 'user',
     },
 };
 
 function App() {
-    let isMediaAvailable: string = ":( Media features are not available";
-    if ("mediaDevices" in navigator && "getUserMedia" in navigator.mediaDevices) {
-        isMediaAvailable = ":) Media Capabilities are available";
-        // Requesting for Permission
-        navigator.mediaDevices.getUserMedia({ video: true });
+    const [videoStream, setVideoStream] = useState<MediaStream | null>(null);
 
-        const initCamera = async () => {
+    const initCamera = async () => {
+        try {
             const devices = await navigator.mediaDevices.enumerateDevices();
-            debugger;
-            const videoCam = devices[1];
-            const updatedConstraints = {
-                ...constraints,
-                deviceId: {
-                    exact: videoCam.deviceId,
-                },
-            };
-            //Get the Stream Object
-            const videoStream = await navigator.mediaDevices.getUserMedia(
-                updatedConstraints
-            );
-            //Set the stream to the video element on the page
-            setTimeout(function () {
-                alert("Setting video stream");
-                const videoElement: any = document.querySelector("video");
-                videoElement.srcObject = videoStream;
-            }, 1500);
-        };
-        initCamera();
-    }
+            const videoCam = devices.find((device) => device.kind === 'videoinput');
+
+            if (videoCam) {
+                const updatedConstraints = {
+                    ...constraints,
+                    deviceId: {
+                        exact: videoCam.deviceId,
+                    },
+                };
+
+                const stream = await navigator.mediaDevices.getUserMedia(updatedConstraints);
+                setVideoStream(stream);
+            } else {
+                alert('No video camera found.');
+            }
+        } catch (error) {
+            console.error('Error accessing camera:', error);
+            alert('Error accessing camera. Please check your settings.');
+        }
+    };
+
+    const startCamera = () => {
+        if ("mediaDevices" in navigator && "getUserMedia" in navigator.mediaDevices) {
+            initCamera();
+        } else {
+            alert('Media features are not available on this device.');
+        }
+    };
+
     return (
-        <video style={{ width: 1280, height: 720 }} autoPlay></video>
-
-
+        <div>
+            <button onClick={startCamera}>Start Camera</button>
+            {videoStream && (
+                <video
+                    style={{ width: 1280, height: 720 }}
+                    autoPlay
+                    ref={(videoElement) => {
+                        if (videoElement) {
+                            videoElement.srcObject = videoStream;
+                        }
+                    }}
+                ></video>
+            )}
+        </div>
     );
 }
 
