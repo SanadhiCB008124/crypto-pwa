@@ -1,42 +1,50 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState  } from 'react';
+import './App.css';
+
+const constraints = {
+    video: {
+        width: {
+            min: 1280,
+            ideal: 1920,
+            max: 2560,
+        },
+        height: {
+            min: 720,
+            ideal: 1080,
+            max: 1440,
+        },
+        facingMode: 'user',
+    },
+};
 
 function App() {
-    const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
+    const [videoStream, setVideoStream] = useState<MediaStream | null>(null);
     const [galleryImage, setGalleryImage] = useState<string | null>(null);
-    const videoRef = useRef<HTMLVideoElement>(null);
 
-    useEffect(() => {
-        const initCamera = async () => {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-                setCameraStream(stream);
-            } catch (error) {
-                console.error('Error accessing camera:', error);
+    const initCamera = async () => {
+        try {
+            const devices = await navigator.mediaDevices.enumerateDevices();
+            const videoCam = devices.find((device) => device.kind === 'videoinput');
+
+            if (videoCam) {
+                const updatedConstraints = {
+                    ...constraints,
+                    deviceId: {
+                        exact: videoCam.deviceId,
+                    },
+                };
+
+                const stream = await navigator.mediaDevices.getUserMedia(updatedConstraints);
+                setVideoStream(stream);
+            } else {
+                alert('No video camera found.');
             }
-        };
-
-        initCamera();
-    }, []);
-
-    const capturePhoto = () => {
-        if (cameraStream && videoRef.current) {
-            const videoElement = videoRef.current;
-            const canvas = document.createElement('canvas');
-            canvas.width = videoElement.videoWidth;
-            canvas.height = videoElement.videoHeight;
-            const context = canvas.getContext('2d');
-
-            if (context) {
-                context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-
-                // Convert the canvas content to an image or base64 data
-                const capturedImage = canvas.toDataURL('image/png');
-
-                // Do something with the captured image (e.g., display it)
-                setGalleryImage(capturedImage);
-            }
+        } catch (error) {
+            console.error('Error accessing camera:', error);
+            alert('Error accessing camera. Please check your settings.');
         }
     };
+
 
     const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = event.target.files?.[0];
@@ -52,11 +60,34 @@ function App() {
         }
     };
 
+    const startCamera = () => {
+        if ("mediaDevices" in navigator && "getUserMedia" in navigator.mediaDevices) {
+            initCamera();
+        } else {
+            alert('Media features are not available on this device.');
+        }
+    };
+
+
     return (
         <div>
-            <h1>Profile Page</h1>
-            {cameraStream && <video autoPlay ref={videoRef} />}
-            <button onClick={capturePhoto}>Capture Photo</button>
+            <button onClick={() => startCamera()}>Start Camera</button>
+
+            {videoStream && (
+                <video
+                    style={{ width: 1280, height: 720 }}
+                    autoPlay
+                    ref={(videoElement) => {
+                        if (videoElement) {
+                            videoElement.srcObject = videoStream;
+                        }
+                    }}
+                ></video>
+            )}
+            <button onClick={() => handleImageUpload}>Upload Image</button>
+
+
+
             <input
                 type="file"
                 accept="image/*"
