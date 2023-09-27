@@ -1,105 +1,55 @@
-import { useState  } from 'react';
-import './App.css';
 
-const constraints = {
-    video: {
-        width: {
-            min: 1280,
-            ideal: 1920,
-            max: 2560,
-        },
-        height: {
-            min: 720,
-            ideal: 1080,
-            max: 1440,
-        },
-        facingMode: 'user',
-    },
-};
+import './App.css';
+import styles from './style.tsx';
+
+import Navbar from "./components/Navbar.tsx";
+import Home from "./components/Home/Home.tsx"; // Import your Home component
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Send from "./components/Send.tsx";
+import Swap from "./components/Swap.tsx";
+import Buy from "./components/Buy.tsx";
+import Recieve from "./components/Recieve.tsx";
+
+import MobileNav from "./components/MobileNav.tsx";
+import Login from "./components/Login.tsx";
+import CreateWallet from "./components/CreateWallet.tsx";
+import Camera from "./components/Camera.tsx";
+
+
 
 function App() {
-    const [videoStream, setVideoStream] = useState<MediaStream | null>(null);
-    const [galleryImage, setGalleryImage] = useState<string | null>(null);
-
-    const initCamera = async () => {
-        try {
-            const devices = await navigator.mediaDevices.enumerateDevices();
-            const videoCam = devices.find((device) => device.kind === 'videoinput');
-
-            if (videoCam) {
-                const updatedConstraints = {
-                    ...constraints,
-                    deviceId: {
-                        exact: videoCam.deviceId,
-                    },
-                };
-
-                const stream = await navigator.mediaDevices.getUserMedia(updatedConstraints);
-                setVideoStream(stream);
-            } else {
-                alert('No video camera found.');
-            }
-        } catch (error) {
-            console.error('Error accessing camera:', error);
-            alert('Error accessing camera. Please check your settings.');
-        }
-    };
-
-
-    const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const selectedFile = event.target.files?.[0];
-        if (selectedFile) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                if (e.target && typeof e.target.result === 'string') {
-                    const uploadedImage = e.target.result;
-                    setGalleryImage(uploadedImage);
-                }
-            };
-            reader.readAsDataURL(selectedFile);
-        }
-    };
-
-    const startCamera = () => {
-        if ("mediaDevices" in navigator && "getUserMedia" in navigator.mediaDevices) {
-            initCamera();
-        } else {
-            alert('Media features are not available on this device.');
-        }
-    };
 
 
     return (
-        <div>
-            <button onClick={() => startCamera()}>Start Camera</button>
+        <BrowserRouter>
 
-            {videoStream && (
-                <video
-                    style={{ width: 1280, height: 720 }}
-                    autoPlay
-                    ref={(videoElement) => {
-                        if (videoElement) {
-                            videoElement.srcObject = videoStream;
-                        }
-                    }}
-                ></video>
-            )}
-            <button onClick={() => handleImageUpload}>Upload Image</button>
+            <div className="bg-primary w-full overflow-hidden  ">
+                <div className={`${styles.paddingX} ${styles.flexCenter}  `}>
 
+                    <div className={`${styles.boxWidth} `}>
+                        <Navbar/>
+                    </div>
 
-
-            <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageUpload}
-            />
-            {galleryImage && (
-                <div>
-                    <h2>Preview:</h2>
-                    <img src={galleryImage} alt="Uploaded" />
                 </div>
-            )}
-        </div>
+                <MobileNav/>
+
+                <div className={`bg-primary ${styles.flexStart}`}>
+                    <div className={`${styles.boxWidth}`}>
+                        <Routes>
+                            <Route path="/home" element={<Home />} />
+                            <Route path="/send" element={<Send />} />
+                            <Route path="/swap" element={<Swap />} />
+                            <Route path="/buy" element={<Buy />} />
+                            <Route path="/receive" element={<Recieve />} />
+                            <Route path="/login" element={<Login/>} />
+                            <Route path="/createWallet" element={<CreateWallet/>} />
+                            <Route path="/camera" element={<Camera/>} />
+                        </Routes>
+                    </div>
+                </div>
+            </div>
+        </BrowserRouter>
     );
 }
 
