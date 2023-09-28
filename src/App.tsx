@@ -15,6 +15,8 @@ import MobileNav from "./components/MobileNav.tsx";
 import Login from "./components/Login.tsx";
 import CreateWallet from "./components/CreateWallet.tsx";
 import Camera from "./components/Camera.tsx";
+import BarcodeScanner from "./components/BarcodeScanner.tsx";
+import SendViaQR from "./components/SendViaQR.tsx";
 
 
 
@@ -45,6 +47,9 @@ function App() {
                             <Route path="/login" element={<Login/>} />
                             <Route path="/createWallet" element={<CreateWallet/>} />
                             <Route path="/camera" element={<Camera/>} />
+                            <Route path="/barcodescanner" element={<BarcodeScanner/>} />
+                            <Route path="/sendviaQr" element={<SendViaQR/>} />
+
                         </Routes>
                     </div>
                 </div>

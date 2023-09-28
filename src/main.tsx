@@ -3,7 +3,12 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 
-
+if(!("BarcodeDetector" in window)){
+    console.log("BarcodeDetector is not supported by this browser");
+}else
+{
+    console.log("BarcodeDetector is supported by this browser")
+}
 
 
 
