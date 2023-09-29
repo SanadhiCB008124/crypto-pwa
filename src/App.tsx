@@ -18,7 +18,6 @@ import Profile from "./components/Profile.tsx";
 import MobileNav from "./components/MobileNav.tsx";
 import Get from "./components/Get.tsx";
 import Card from "./components/Card.tsx";
-import Recieve from "./components/Recieve.tsx";
 function App() {
     return (
         <BrowserRouter>
@@ -51,8 +50,6 @@ function App() {
                             <Route path="/profile" element={<Profile/>} />
                             <Route path="/card" element={<Card/>} />
                             <Route path="/buy2" element={<Buy2/>} />
-                            <Route path="/recieve" element={<Recieve/>} />
-
 
 
                         </Routes>

@@ -19,7 +19,7 @@ function Swap() {
                     <div>
                         <div className="lg:text-left text-center">
                             <div className="flex items-center justify-center">
-                                <div className="bg-primary flex flex-col w-80 border-2 border-primary-500 rounded-3xl px-8 py-10">
+                                <div className="bg-primary flex flex-col w-70 border-2 border-primary-500 rounded-3xl px-8 py-10">
                                     <h2 className={styles.heading1}>
                                         Swap
                                     </h2>

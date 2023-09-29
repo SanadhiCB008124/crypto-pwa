@@ -21,7 +21,7 @@ function Test() {
 
                     <div className="lg:text-left text-center">
                         <div className="flex items-center justify-center">
-                            <div className="bg-primary flex flex-col w-80 border-2 border-primary-500 rounded-3xl px-8 py-10">
+                            <div className="bg-primary flex flex-col w-70 border-2 border-primary-500 rounded-3xl px-8 py-10">
 
                                 <form className="flex flex-col space-y-8 mt-10">
                                     <details className="dropdown mb-24">
@@ -36,7 +36,7 @@ function Test() {
                                         </ul>
                                     </details>
                                     <details className="dropdown mb-2 w-full ">
-                                        <summary className="m-1 bg-black  py-2 px-4 rounded-2xl ">Select Payment Method</summary>
+                                        <summary className="m-1 bg-black text-sm  py-2 px-4 rounded-2xl ">Select Payment Method</summary>
                                         <ul className="p-2 shadow menu dropdown-content z-[1] bg-black rounded-box w-52">
                                             <Link to="/card" >
                                                 <li><a className="hover:bg-white hover:text-black">MasterCard</a></li>

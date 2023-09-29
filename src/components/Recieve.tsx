@@ -20,7 +20,7 @@ const Recieve:React.FC=()=>{
                     <div>
                         <div className="lg:text-left text-center">
                             <div className="flex items-center justify-center">
-                                <div className="bg-primary flex flex-col w-80 border-2 border-primary-500 rounded-lg px-8 py-10">
+                                <div className="bg-primary flex flex-col w-70 border-2 border-primary-500 rounded-3xl px-8 py-10">
 
                                     <form className="flex flex-col space-y-8 mt-10">
                                  <div>
