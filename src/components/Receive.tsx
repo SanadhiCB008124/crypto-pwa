@@ -4,7 +4,7 @@ import React from "react";
 import bgImg from "../assets/splash4.jpg";
 
 import qr from "../assets/qr.png";
-const Recieve:React.FC=()=>{
+const Receive:React.FC=()=>{
     return (
         <div
             className=" w-full bg-primary h-full  flex-auto items-center justify-center p-10 overflow-hidden text-white bg-no-repeat bg-cover "
@@ -80,4 +80,4 @@ const Recieve:React.FC=()=>{
     );
 }
 
-export default Recieve;
+export default Receive;
