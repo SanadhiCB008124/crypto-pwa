@@ -15,9 +15,9 @@ const MobileNav: React.FC = () => {
             <div className="flex flex-row  space-x-8">
                 <div className="bg-black border-primary-500 border-2 p-2 pr-4 pl-4 rounded-2xl ">
                 <button className="text-white bg-primary bg-transparent">
-                    <Link to="/Home" >
+                    <Link to="/get" >
                         <svg width="40px" height="50px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274" stroke="#508f81" stroke-width="1.5" stroke-linecap="round"></path> <path d="M15 18H9" stroke="#508f81" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
-                   <label>Home</label>
+                   <label>Get</label>
                     </Link>
                 </button>
                 </div>

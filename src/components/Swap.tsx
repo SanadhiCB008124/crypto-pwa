@@ -2,7 +2,6 @@
 
 import styles from "../style.tsx";
 import bgImg from "../assets/splash4.jpg"
-import MobileNav from "./MobileNav.tsx";
 
 function Swap() {
     return (
@@ -12,16 +11,15 @@ function Swap() {
         backgroundImage: `url(${bgImg})`
     }}
 >
-            <MobileNav/>
+            {/**}  <MobileNav/>**/}
             <div
                 className=" w-full h-full  flex-auto items-center justify-center p-10 overflow-hidden text-white  ">
                 <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0">
 
                     <div>
-
                         <div className="lg:text-left text-center">
                             <div className="flex items-center justify-center">
-                                <div className="bg-primary flex flex-col w-80 border border-gray-900 rounded-lg px-8 py-10">
+                                <div className="bg-primary flex flex-col w-80 border-2 border-primary-500 rounded-3xl px-8 py-10">
                                     <h2 className={styles.heading1}>
                                         Swap
                                     </h2>

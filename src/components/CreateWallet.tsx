@@ -32,11 +32,11 @@ const CreateWallet: React.FC = () => {
 
       <div>
 
-        <div className="relative min-h-screen grid bg-primary">
+        <div className="min-h-screen grid bg-primary">
           <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0">
 
             <div
-                className="relative w-full bg-primary h-full  flex-auto items-center justify-center p-10 overflow-hidden text-white bg-no-repeat bg-cover "
+                className="w-full bg-primary h-full  flex-auto items-center justify-center p-10 overflow-hidden text-white bg-no-repeat bg-cover "
                 style={{
                   backgroundImage: `url(${bgImg})`
                 }}
@@ -45,7 +45,7 @@ const CreateWallet: React.FC = () => {
 
               <div className="lg:text-left text-center">
                 <div className="flex items-center justify-center">
-                  <div className="bg-primary flex flex-col w-80 border border-gray-900 rounded-lg px-8 py-10">
+                  <div className="bg-primary flex flex-col w-90 border-2 border-primary-500 rounded-3xl px-8 py-10">
 
                     <div className="text-center m-10">
                       <img
@@ -94,14 +94,16 @@ const CreateWallet: React.FC = () => {
 
                       <div className="mb-12 pb-1 pt-1 text-center">
                         <button
-                            className="mb-3 inline-block w-2/5 bg-purple-400 rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
+                            className=" text w-full white bg-black border-2 border-primary-500 py-3 px-4 rounded-xl"
                             type="button"
                             data-te-ripple-init
                             data-te-ripple-color="light"
                         >
                           Create Your Wallet
                         </button><br/>
-                        <button className=" text-white bg-primary">
+                        <button
+                            className=" text w-full white bg-green-950 mt-4 py-3 px-4 rounded-xl"
+                        >
                           <Link to="/Login" >
                             Already Registered ? Login
                           </Link>

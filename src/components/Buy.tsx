@@ -1,12 +1,10 @@
-import { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 
-import { firestore } from '../firebase'; // Import the initialized Firestore instance
-
+import { firestore } from '../firebase';
 
 import SearchBar from './SearchBar';
-import MobileNav from "./MobileNav.tsx";
-
+import { Link } from 'react-router-dom';
 
 type Crypto = {
     id: string;
@@ -18,6 +16,7 @@ type Crypto = {
 };
 const Buy = () => {
     const [cryptos, setCryptos] = useState<Crypto[]>([]);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -46,9 +45,11 @@ const Buy = () => {
 
     return (
 
-    <div className=" bg-primary">
-        <MobileNav/>
-        <div className="ml-3 mr-3">
+        <div
+            className=" w-full bg-primary h-full  flex-auto items-center justify-center p-10 overflow-hidden text-white  "
+        >
+            {/**}    <MobileNav/>**/}
+        <div className="m-10">
             <SearchBar />
         </div>
 
@@ -61,9 +62,9 @@ const Buy = () => {
 <div className="flex min-w-0 gap-x-4">
             <img src={crypto.image} alt={crypto.name} className="h-12 w-12 flex-none rounded-full bg-primary"/>
             <div className="min-w-0 flex-auto">
-                                <p className="text-sm font-semibold leading-6 text-white">
+                <Link to="/buy2" >        <p className="text-sm font-semibold leading-6 text-white">
                                     {crypto.name}
-                                </p>
+                </p></Link>
                                 <p> {crypto.symbol}</p>
                             </div>
                         </div>
@@ -71,6 +72,8 @@ const Buy = () => {
                             <p className="text-sm leading-6 text-white">$ {crypto.price}</p>
                           
                         </div>
+
+
             
           </li>
         ))}

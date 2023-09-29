@@ -22,14 +22,24 @@ export default function Navbar() {
                         className="font-poppins text-primary-500  font-small cursor-pointer text-[16px]  space-x-4"
 
                     >
-
-
                         <Link to="/profile" >
                             <label>Profile</label>
                         </Link>
 
 
                     </li>
+
+                <li
+
+                    className="font-poppins text-primary-500  font-small cursor-pointer text-[16px]  space-x-4"
+
+                >
+                    <Link to="/home" >
+                        <label>Home</label>
+                    </Link>
+
+
+                </li>
                 <li  className="font-poppins text-primary-500  font-small cursor-pointer text-[16px]
                                 ">My wallet</li>
                 <li  className="font-poppins text-primary-500 font-small cursor-pointer text-[16px]
@@ -63,6 +73,14 @@ export default function Navbar() {
                             </Link>
 
                             </li>
+
+                        <li
+                            className="font-poppins text-black font-medium cursor-pointer text-[16px] pr-4 pb-4 ml-0
+                              "><Link to="/home" >
+                            <label>Home</label>
+                        </Link>
+
+                        </li>
                         <li  className="font-poppins text-black  font-medium cursor-pointer text-[16px] pr-4 pb-4 ml-0
                                 ">My wallet</li>
                         <li  className="font-poppins text-black  font-medium cursor-pointer text-[16px] pr-4 pb-4 ml-0

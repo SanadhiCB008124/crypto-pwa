@@ -1,18 +1,15 @@
 import React from 'react';
 import  bitcoin from "../../assets/ethereum.png";
-import MobileNav from "../MobileNav.tsx";
+
 const Dashboard: React.FC = () => {
     return (
 
 
-            <div className="">
+        <div
+            className=" w-full bg-primary h-full  flex-auto items-center justify-center p-10 overflow-hidden text-white  "
+        >
+            {/**}  <MobileNav/>**/}
 
-                <div className={"flex flex-row justify-center"}>
-                    <MobileNav/>
-                </div>
-
-
-                    <div className="">
                         <div className="m-10">
 
                             <div
@@ -81,7 +78,6 @@ const Dashboard: React.FC = () => {
 
                             </div>
                         </div>
-                    </div>
                     </div>
 
 

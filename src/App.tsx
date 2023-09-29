@@ -1,31 +1,28 @@
 
 import './App.css';
-import styles from './style.tsx';
 
 import Navbar from "./components/Navbar.tsx";
 import Home from "./components/Home/Home.tsx"; // Import your Home component
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {BrowserRouter, Routes, Route, } from "react-router-dom";
 
+import styles from './style.tsx';
 import Send from "./components/Send.tsx";
 import Swap from "./components/Swap.tsx";
 import Buy from "./components/Buy.tsx";
-import Recieve from "./components/Recieve.tsx";
-
-
+import Buy2 from "./components/Buy2.tsx";
 import Login from "./components/Login.tsx";
 import CreateWallet from "./components/CreateWallet.tsx";
 import Camera from "./components/Camera.tsx";
 import BarcodeScanner from "./components/BarcodeScanner.tsx";
-
 import Profile from "./components/Profile.tsx";
-
+import MobileNav from "./components/MobileNav.tsx";
+import Get from "./components/Get.tsx";
+import Card from "./components/Card.tsx";
 function App() {
-
-
     return (
         <BrowserRouter>
 
-            <div className="bg-black w-full overflow-hidden  ">
+            <div className="bg-primary w-full overflow-hidden  ">
                 <div className={`${styles.paddingX} ${styles.flexCenter}  `}>
 
                     <div className={`${styles.boxWidth} `}>
@@ -33,7 +30,7 @@ function App() {
                     </div>
 
                 </div>
-
+                <MobileNav/>
 
                 <div className={`bg-primary ${styles.flexStart}`}>
                     <div className={`${styles.boxWidth}`}>
@@ -42,12 +39,15 @@ function App() {
                             <Route path="/send" element={<Send />} />
                             <Route path="/swap" element={<Swap />} />
                             <Route path="/buy" element={<Buy />} />
-                            <Route path="/receive" element={<Recieve />} />
+                            <Route path="/get" element={<Get/>} />
                             <Route path="/login" element={<Login/>} />
                             <Route path="/createWallet" element={<CreateWallet/>} />
                             <Route path="/camera" element={<Camera/>} />
                             <Route path="/barcodescanner" element={<BarcodeScanner/>} />
                             <Route path="/profile" element={<Profile/>} />
+                            <Route path="/card" element={<Card/>} />
+                            <Route path="/buy2" element={<Buy2/>} />
+
 
                         </Routes>
                     </div>
