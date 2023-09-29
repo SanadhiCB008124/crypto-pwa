@@ -5,6 +5,7 @@ import { firestore } from '../firebase'; // Import the initialized Firestore ins
 
 
 import SearchBar from './SearchBar';
+import MobileNav from "./MobileNav.tsx";
 
 
 type Crypto = {
@@ -46,6 +47,7 @@ const Buy = () => {
     return (
 
     <div className=" bg-primary">
+        <MobileNav/>
         <div className="ml-3 mr-3">
             <SearchBar />
         </div>

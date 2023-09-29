@@ -1,25 +1,27 @@
 
 
-import bgImg2 from "../assets/bg3.jpg"
+import bgImg from "../assets/splash4.jpg"
 import { Link} from 'react-router-dom';
 import styles from "../style.tsx";
+import MobileNav from "./MobileNav.tsx";
 
 function Send() {
 
 
     return (
-        <div>
 
-            <div className="relative min-h-screen grid bg-primary">
+        <div
+            className=" w-full bg-primary h-full  flex-auto items-center justify-center p-10 overflow-hidden text-white bg-no-repeat bg-cover "
+            style={{
+                backgroundImage: `url(${bgImg})`
+            }}
+        >
+        <MobileNav/>
+            <div className=" min-h-screen grid ">
 
                 <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0">
 
-                    <div
-                        className="relative w-full bg-primary h-full  flex-auto items-center justify-center p-10 overflow-hidden text-white bg-no-repeat bg-cover "
-                        style={{
-                            backgroundImage: `url(${bgImg2})`
-                        }}
-                    >
+                    <div>
 
                         <div className="lg:text-left text-center">
                             <div className="flex items-center justify-center">

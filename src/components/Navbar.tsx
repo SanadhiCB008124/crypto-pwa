@@ -3,31 +3,40 @@ import logo from "../assets/coin.jpg";
 
 import close from "../assets/close.svg";
 import menu from "../assets/menu.svg";
-import { navLinks2 } from "../constants";
+
 import {Link} from "react-router-dom";
 import {useState} from "react";
 
 
 export default function Navbar() {
-    const [active, setActive] = useState("Home");
     const [toggle, setToggle] = useState(false);
 
     return (
         <nav className="w-full flex py-6 justify-between items-center navbar">
             <img src={logo} alt="BitWallet" className="w-[39px] h-[39px] rounded-full " />
 
-            <ul className="list-none sm:flex hidden justify-end items-center flex-1">
-                {navLinks2.map((nav, index) => (
+            <ul className="list-none sm:flex hidden justify-end items-center flex-1 space-x-4">
+
                     <li
-                        key={nav.id}
-                        className={`font-poppins font-normal cursor-pointer text-[16px]  ${
-                            active === nav.title ? "text-primary-500" : "text-primary-500"
-                        } ${index === navLinks2.length - 1 ? "mr-0" : "mr-10"}`}
-                        onClick={() => setActive(nav.title)}
+
+                        className="font-poppins text-primary-500  font-small cursor-pointer text-[16px]  space-x-4"
+
                     >
-                        <a href={`#${nav.id}`}>{nav.title}</a>
+
+
+                        <Link to="/profile" >
+                            <label>Profile</label>
+                        </Link>
+
+
                     </li>
-                ))}
+                <li  className="font-poppins text-primary-500  font-small cursor-pointer text-[16px]
+                                ">My wallet</li>
+                <li  className="font-poppins text-primary-500 font-small cursor-pointer text-[16px]
+                                ">Notifications</li>
+                <li  className="font-poppins text-primary-500 font-small cursor-pointer text-[16px]
+                                ">Settings</li>
+
             </ul>
 
             <div className="sm:hidden flex flex-1 justify-end items-center">
@@ -48,7 +57,7 @@ export default function Navbar() {
                             <li
                                 className="font-poppins text-black font-medium cursor-pointer text-[16px] pr-4 pb-4 ml-0
                                 "
-                              onClick={() => setActive("Profile")}
+
                             ><Link to="/profile" >
                                 <label>Profile</label>
                             </Link>

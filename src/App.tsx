@@ -11,7 +11,7 @@ import Swap from "./components/Swap.tsx";
 import Buy from "./components/Buy.tsx";
 import Recieve from "./components/Recieve.tsx";
 
-import MobileNav from "./components/MobileNav.tsx";
+
 import Login from "./components/Login.tsx";
 import CreateWallet from "./components/CreateWallet.tsx";
 import Camera from "./components/Camera.tsx";
@@ -19,15 +19,13 @@ import BarcodeScanner from "./components/BarcodeScanner.tsx";
 
 import Profile from "./components/Profile.tsx";
 
-
-
 function App() {
 
 
     return (
         <BrowserRouter>
 
-            <div className="bg-primary w-full overflow-hidden  ">
+            <div className="bg-black w-full overflow-hidden  ">
                 <div className={`${styles.paddingX} ${styles.flexCenter}  `}>
 
                     <div className={`${styles.boxWidth} `}>
@@ -35,7 +33,7 @@ function App() {
                     </div>
 
                 </div>
-                <MobileNav/>
+
 
                 <div className={`bg-primary ${styles.flexStart}`}>
                     <div className={`${styles.boxWidth}`}>
