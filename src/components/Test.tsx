@@ -2,7 +2,6 @@
 
 import bgImg from "../assets/splash4.jpg"
 import { Link} from 'react-router-dom';
-import styles from "../style.tsx";
 
 function Test() {
 
