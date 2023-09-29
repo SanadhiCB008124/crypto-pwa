@@ -49,12 +49,12 @@ const Get = () => {
             className=" w-full bg-primary h-full  flex-auto items-center justify-center p-10 overflow-hidden text-white  "
         >
             {/**}    <MobileNav/>**/}
-            <div className="m-10">
+            <div className="">
                 <SearchBar />
             </div>
 
 
-            <div className='m-10'>
+            <div className='w-full'>
                 <h2 className="text-primary-500">Recieve</h2>
                 <ul role="list" className="divide-ymt-10">
                     {cryptos.map((crypto) => (

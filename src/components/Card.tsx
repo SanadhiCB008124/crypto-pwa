@@ -14,7 +14,7 @@ const Card: React.FC = () => {
             {/**}   <MobileNav/>**/}
             <div
                 className=" w-full h-full  flex-auto items-center justify-center p-10 overflow-hidden text-white  ">
-                <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0">
+                <div className="flex flex-col items-center ">
 
 
                     <div className="lg:text-left text-center">
