@@ -25,12 +25,8 @@ const MobileNav: React.FC = () => {
                         <label>Buy</label>
                     </Link>
                 </button>
-                <button className=" text-white bg-primary">
-                    <Link to="/Camera" >
-                       Camera
-                    </Link>
-                </button>
-                <button className=" text-white bg-primary">
+
+                {/**  <button className=" text-white bg-primary">
                     <Link to="/SendViaQr" >
                        Send Via QR
                     </Link>
@@ -39,7 +35,7 @@ const MobileNav: React.FC = () => {
                     <Link to="/BarcodeScanner" >
                        Scanner
                     </Link>
-                </button>
+                </button>*/}
 
                 <button className="text-white bg-primary ">
                     <Link to="/Send" >

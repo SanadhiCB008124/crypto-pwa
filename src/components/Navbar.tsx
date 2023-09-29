@@ -1,9 +1,11 @@
-import {useState} from "react";
+
 import logo from "../assets/coin.jpg";
 
 import close from "../assets/close.svg";
 import menu from "../assets/menu.svg";
 import { navLinks2 } from "../constants";
+import {Link} from "react-router-dom";
+import {useState} from "react";
 
 
 export default function Navbar() {
@@ -41,18 +43,24 @@ export default function Navbar() {
                         !toggle ? "hidden" : "flex"
                     } p-6 bg-white absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
                 >
-                    <ul className="list-none flex justify-end items-start flex-1 flex-col">
-                        {navLinks2.map((nav, index) => (
+                    <ul className="list-none flex justify-end items-start flex-1 flex-col m-3">
+
                             <li
-                                key={nav.id}
-                                className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                                    active === nav.title ? "text-black underline" : "text-primary-300 no-underline"
-                                } ${index === navLinks2.length - 1 ? "mb-0" : "mb-4"}`}
-                                onClick={() => setActive(nav.title)}
-                            >
-                                <a href={`#${nav.id}`}>{nav.title}</a>
+                                className="font-poppins text-black font-medium cursor-pointer text-[16px] pr-4 pb-4 ml-0
+                                "
+                              onClick={() => setActive("Profile")}
+                            ><Link to="/profile" >
+                                <label>Profile</label>
+                            </Link>
+
                             </li>
-                        ))}
+                        <li  className="font-poppins text-black  font-medium cursor-pointer text-[16px] pr-4 pb-4 ml-0
+                                ">My wallet</li>
+                        <li  className="font-poppins text-black  font-medium cursor-pointer text-[16px] pr-4 pb-4 ml-0
+                                ">Notifications</li>
+                        <li  className="font-poppins text-black  font-medium cursor-pointer text-[16px] pr-4 pb-4 ml-0
+                                ">Settings</li>
+
                     </ul>
                 </div>
             </div>
