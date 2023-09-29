@@ -6,7 +6,6 @@ import styles from "../style.tsx";
 
 function Send() {
 
-
     return (
 
         <div
