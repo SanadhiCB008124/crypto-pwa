@@ -30,7 +30,10 @@ function App() {
                     </div>
 
                 </div>
-                <MobileNav/>
+                <div>
+                    <MobileNav/>
+                </div>
+
 
                 <div className={`bg-primary ${styles.flexStart}`}>
                     <div className={`${styles.boxWidth}`}>

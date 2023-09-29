@@ -11,7 +11,15 @@ const Buy2: React.FC = () => {
                 backgroundImage: `url(${bgImg})`
             }}
         >
-            <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+            {/**}   <MobileNav/>**/}
+            <div
+                className=" w-full h-full  flex-auto items-center justify-center p-10 overflow-hidden text-white  ">
+                <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0">
+
+
+                    <div className="lg:text-left text-center">
+                        <div className="flex items-center justify-center">
+
                 <div className="relative border-2 border-primary-500 px-4 py-10 bg-primary mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
                     <div className="max-w-md mx-auto">
                         <div className="flex items-center space-x-5">
@@ -78,6 +86,9 @@ const Buy2: React.FC = () => {
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
     );
 };
