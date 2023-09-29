@@ -3,7 +3,7 @@ import coin from "/src/assets/coin.jpg";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {Link, useNavigate} from "react-router-dom";
 import { auth } from "../firebase";
-import bgImg2 from "../assets/bg3.jpg";
+import bgImg from "../assets/splash4.jpg"
 import styles from "../style.tsx";
 
 const Login: React.FC = () => {
@@ -35,7 +35,7 @@ const Login: React.FC = () => {
                   <div
                       className="relative w-full bg-primary h-full  flex-auto items-center justify-center p-10 overflow-hidden text-white bg-no-repeat bg-cover "
                       style={{
-                          backgroundImage: `url(${bgImg2})`
+                          backgroundImage: `url(${bgImg})`
                       }}
                   >
 
