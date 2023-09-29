@@ -3,10 +3,11 @@ import {useEffect, useState} from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase";
 import * as React from 'react';
-
+import  {getAuth,signOut, onAuthStateChanged} from "firebase/auth";
 
 
 import {Avatar} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 const constraints = {
     video: {
@@ -23,10 +24,24 @@ const constraints = {
         facingMode: 'user',
     },
 };
+
 function Camera() {
     const [videoStream, setVideoStream] = useState<MediaStream | null>(null);
     const [galleryImage, setGalleryImage] = useState<string | null>(null);
+   const auth=getAuth();
 
+    const navigate = useNavigate();
+
+   onAuthStateChanged(auth, (user) => {
+       if(user){
+           console.log(user);
+           const uid=user.uid;
+           console.log(uid);
+       }
+       else{
+              console.log("no user");
+       }
+   });
 
      const initCamera = async () => {
         try {
@@ -55,21 +70,22 @@ function Camera() {
     const fetchCurrentProfileImage = async () => {
         try {
             // Create a reference to the location in Firebase Storage where the profile image is stored.
-            const storageRef = ref(storage, "profile-images/your-profile-image.jpg"); // Replace with the correct path
+            const storageRef = ref(storage, "profile-images/cv image.jpeg"); // Replace with the correct path
 
-            // Get the download URL for the profile image.
+
             const downloadURL = await getDownloadURL(storageRef);
 
-            // Set the download URL as the gallery image.
+
             setGalleryImage(downloadURL);
         } catch (error) {
             console.error("Error fetching profile image: ", error);
-            // Handle the error
+
         }
     };
     useEffect(() => {
         fetchCurrentProfileImage();
     }, []);
+
 
 
 
@@ -103,6 +119,21 @@ function Camera() {
             alert('Media features are not available on this device.');
         }
     };
+
+    const SignOut = () => {
+        signOut(auth)
+            .then(() => {
+                // Sign-out successful.
+                console.log('User signed out');
+                navigate("/login");
+            })
+            .catch((error) => {
+                // An error happened.
+                console.error('Sign-out error:', error);
+            });
+    };
+
+
 
 
     return (
@@ -206,7 +237,7 @@ function Camera() {
                                     <li className="p-3">Payment settings</li>
                                     <li className="p-3">Privacy settings</li>
                                     <li className="p-3">Support and Help</li>
-                                    <li className="p-3">Logout</li>
+                                    <button onClick={SignOut}><li className="p-3" >Logout</li></button>
                                     <li className="p-3">Delete Account</li>
                                 </ul>
                             </div>

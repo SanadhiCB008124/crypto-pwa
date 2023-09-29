@@ -1,83 +1,67 @@
-import  { useEffect, useRef, useState } from "react";
-
-declare class BarcodeDetector {
-    constructor(options?: BarcodeDetectorOptions);
-
-    static getSupportedFormats(): Promise<string[]>;
-
-    detect(image: ImageBitmapSource): Promise<BarcodeDetectionResult[]>;
-}
-
-interface BarcodeDetectorOptions {
-    formats: string[];
-}
-
-interface BarcodeDetectionResult {
-    rawValue: string;
-}
-
-declare type ImageBitmapSource = HTMLImageElement | HTMLVideoElement | HTMLCanvasElement | ImageBitmap;
-
+import { useEffect, useState } from "react";
+import { Html5QrcodeScanner } from 'html5-qrcode';
 
 function BarcodeScanner() {
-    const videoRef = useRef<HTMLVideoElement>(null);
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-    const [detectedCodes, setDetectedCodes] = useState<string[]>([]);
+    const [scanResult, setScanResult] = useState<string | null>(null);
+    const [manualSerialNumber, setManualSerialNumber] = useState<string>('');
 
     useEffect(() => {
-        async function startBarcodeScanner() {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-                if (videoRef.current) {
-                    videoRef.current.srcObject = stream;
-                }
-            } catch (error) {
-                console.error("Error accessing camera:", error);
-            }
-        }
+        const scanner = new Html5QrcodeScanner('reader', {
+            qrbox: {
+                width: 250,
+                height: 250,
+            },
+            fps: 5,
+        });
 
-        startBarcodeScanner();
-    }, []);
+        let isScanning = true;
 
-    useEffect(() => {
-        const video = videoRef.current;
-        const canvas = canvasRef.current;
-        const ctx = canvas?.getContext("2d");
-
-        const handleFrame = async () => {
-            if (video && ctx) {
-                ctx.drawImage(video, 0, 0, canvas?.width || 0, canvas?.height || 0);
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                const imageBitmap = await createImageBitmap(canvas);
-
-                const barcodeDetector = new BarcodeDetector({ formats: ["qr_code", "ean_13", "code_128"] });
-                const barcodes = await barcodeDetector.detect(imageBitmap);
-
-                if (barcodes.length > 0) {
-                    const detectedValues = barcodes.map((barcode) => barcode.rawValue);
-                    setDetectedCodes(detectedValues);
-                }
-
-                requestAnimationFrame(handleFrame);
+        const success = (result: string) => {
+            if (isScanning) {
+                scanner.clear();
+                setScanResult(result);
+                isScanning = false;
             }
         };
 
-        handleFrame();
+        const error = (err: Error) => {
+            console.warn(err);
+        };
+        scanner.render(success, error);
+
+        return () => {
+            isScanning = false;
+        };
     }, []);
 
+    function handleManualSerialNumberChange(event: React.ChangeEvent<HTMLInputElement>) {
+        setManualSerialNumber(event.target.value);
+    }
+
     return (
-        <div>
-            <video ref={videoRef} autoPlay playsInline muted style={{ display: "none" }} />
-            <canvas ref={canvasRef} style={{ display: "none" }} />
-            <div>
-                <h2>Detected Barcodes:</h2>
-                <ul>
-                    {detectedCodes.map((code, index) => (
-                        <li key={index}>{code}</li>
-                    ))}
-                </ul>
-            </div>
+        <div className="App">
+            <h1>QR Scanning Code</h1>
+            {scanResult ? (
+                <div>
+                    <p>Success: <a href={scanResult}>{scanResult}</a></p>
+                    <p>Serial Number: {scanResult.slice(-16)}</p>
+                </div>
+            ) : (
+                <div>
+                    <div id="reader"></div>
+                    <p className="center-text">Or enter the serial number manually:</p>
+                    <div className="center-input">
+                        <input
+                            type="text"
+                            value={manualSerialNumber}
+                            onChange={handleManualSerialNumberChange}
+                        />
+                        {manualSerialNumber && (
+                            <p>Serial Number: {manualSerialNumber.slice(-16)}</p>
+                        )}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

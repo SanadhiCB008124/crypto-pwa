@@ -26,16 +26,7 @@ const MobileNav: React.FC = () => {
                     </Link>
                 </button>
 
-                {/**  <button className=" text-white bg-primary">
-                    <Link to="/SendViaQr" >
-                       Send Via QR
-                    </Link>
-                </button>
-                <button className=" text-white bg-primary">
-                    <Link to="/BarcodeScanner" >
-                       Scanner
-                    </Link>
-                </button>*/}
+
 
                 <button className="text-white bg-primary ">
                     <Link to="/Send" >
