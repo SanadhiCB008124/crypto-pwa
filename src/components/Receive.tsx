@@ -89,6 +89,8 @@ const Recieve: React.FC = () => {
                                             <p>Your device/browser doesn't support the Contact Picker API.</p>
                                         )}
 
+                                        <h2 className="flex flex-row ">To: </h2>
+
                                         <ul>
                                             {contacts.map((contact, index) => (
                                                 <li key={index}>
@@ -98,7 +100,7 @@ const Recieve: React.FC = () => {
                                                         value={contact.name}
                                                         className="border rounded-lg py-3 px-3 bg-black border-primary-500  placeholder-white-500 text-white"
                                                     />
-                                                    {contact.name} - {contact.tel}
+
                                                 </li>
                                             ))}
                                         </ul>

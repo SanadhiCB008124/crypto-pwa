@@ -4,9 +4,6 @@ import facebook from "../assets/facebook.svg";
 import instagram from "../assets/instagram.svg";
 import twitter from "../assets/twitter.svg";
 import linkedin from "../assets/linkedin.svg";
-import airbnb from "../assets/airbnb.png";
-import binance from "../assets/binance.png";
-import dropbox from "../assets/dropbox.png";
 import send from "../assets/coin.jpg";
 
 
@@ -169,21 +166,3 @@ export const socialMedia = [
     },
 ];
 
-export const clients = [
-    {
-        id: "client-1",
-        logo: airbnb,
-    },
-    {
-        id: "client-2",
-        logo: binance,
-    },
-    {
-        id: "client-3",
-        logo: send,
-    },
-    {
-        id: "client-4",
-        logo: dropbox,
-    },
-];

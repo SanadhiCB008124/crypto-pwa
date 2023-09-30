@@ -1,5 +1,6 @@
 import React from 'react';
-import  bitcoin from "../../assets/ethereum.png";
+import  eth from "../../assets/ethereum.png";
+import  bitcoin from "../../assets/BTC.png";
 
 const Dashboard: React.FC = () => {
     return (
@@ -61,7 +62,7 @@ const Dashboard: React.FC = () => {
 
                                     >
                                         <div className="flex justify-between ">
-                                            <img src={bitcoin} alt={bitcoin} className="h-12 w-12 flex-none rounded-full bg-primary"/>
+                                            <img src={eth} alt={eth} className="h-12 w-12 flex-none rounded-full bg-primary"/>
 
                                             <div className="mt-3 text-3xl  leading-8 text-white">Ethereum</div>
 

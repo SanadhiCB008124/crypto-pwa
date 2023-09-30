@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import  coin from "/src/assets/coin.jpg"
+import  coin from "/src/assets/logo.png"
 import {Link} from "react-router-dom";
 import bgImg from "../assets/splash4.jpg"
 import styles from "../style.tsx";
@@ -49,47 +49,55 @@ const CreateWallet: React.FC = () => {
 
                     <div className="text-center m-10">
                       <img
-                          className="mx-auto w-48 rounded-full"
+                          className="mx-auto w-38 rounded-full"
                           src={coin}
                           alt="logo"
                       />
                       <h4 className={styles.heading1}>
-                        Bit Wallet
+                       ZenithPay
                       </h4>
                     </div>
                     <form onClick={handleRegister}>
                       <p className="mb-4 text-white">Please Register your wallet</p>
-                      <div className="relative mb-4" data-te-input-wrapper-init>
+                      <div className="mb-4 flex flex-col" >
+
+                        <label
+                            htmlFor="email"
+                            className="text-left mb-2"
+
+                        >
+                          Username
+                        </label>
                         <input
                             type="text"
                             name="email"
                             onChange={(e) => setEmail(e.target.value)}
-                            className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder-opacity-100 peer-data-[te-input-state-active]:placeholder-opacity-100 motion-reduce:transition-none dark:placeholder-text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder-opacity-0"
+                            className=" rounded-lg py-3 px-3 bg-black   placeholder-white-500 text-white"
+
                             id="exampleFormControlInput1"
                             placeholder="Username"
                         />
-                        <label
-                            htmlFor="email"
-                            className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                        >
-                          Username
-                        </label>
+
                       </div>
-                      <div className="relative mb-4 border-1 border-black" data-te-input-wrapper-init>
+                      <div className="mb-4 flex flex-col">
+
+                        <label
+                            htmlFor="password"
+                            className="text-left mb-2"
+
+                        >
+                          Password
+                        </label>
                         <input
                             type="text"
                             name="password"
                             onChange={(e) => setPassword(e.target.value)}
-                            className="peer  block min-h-[auto] w-full rounded border-1 border-black bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder-opacity-100 peer-data-[te-input-state-active]:placeholder-opacity-100 motion-reduce:transition-none dark:placeholder-text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder-opacity-0"
+
+                            className=" rounded-lg py-3 px-3 bg-black   placeholder-white-500 text-white"
                             id="exampleFormControlInput11"
                             placeholder="Password"
                         />
-                        <label
-                            htmlFor="password"
-                            className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                        >
-                          Password
-                        </label>
+
                       </div>
 
                       <div className="mb-12 pb-1 pt-1 text-center">
