@@ -13,7 +13,8 @@ const Test: React.FC = () => {
     const [phoneValue, setPhoneValue] = useState<string>('');
     const [isContactPickerSupported, setIsContactPickerSupported] = useState<boolean | null>(null);
 
-    const handleContactPicker = async () => {
+    const handleContactPicker = async (event:React.FormEvent) => {
+        event.preventDefault();
         try {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
@@ -35,7 +36,8 @@ const Test: React.FC = () => {
         }
     };
 
-    const handleAddContact = () => {
+    const handleAddContact = (event: React.FormEvent) => {
+        event.preventDefault();
         if (nameValue === '' || phoneValue === '') {
             // Handle validation or show an error message
             return;
