@@ -1,65 +1,61 @@
+import React, { useEffect } from 'react';
 
-import './App.css';
-
-import Navbar from "./components/Navbar.tsx";
-import Home from "./components/Home/Home.tsx"; // Import your Home component
-import {BrowserRouter, Routes, Route, } from "react-router-dom";
-
-import styles from './style.tsx';
-import Send from "./components/Send.tsx";
-import Swap from "./components/Swap.tsx";
-import Buy from "./components/Buy.tsx";
-import Buy2 from "./components/Buy2.tsx";
-import Login from "./components/Login.tsx";
-import CreateWallet from "./components/CreateWallet.tsx";
-import Camera from "./components/Camera.tsx";
-import BarcodeScanner from "./components/BarcodeScanner.tsx";
-import Profile from "./components/Profile.tsx";
-import MobileNav from "./components/MobileNav.tsx";
-import Get from "./components/Get.tsx";
-import Card from "./components/Card.tsx";
-import Receive from "./components/Receive.tsx";
-function App() {
-    return (
-        <BrowserRouter>
-
-            <div className="bg-primary w-full overflow-hidden  ">
-                <div className={`${styles.paddingX} ${styles.flexCenter}  `}>
-
-                    <div className={`${styles.boxWidth} `}>
-                        <Navbar/>
-                    </div>
-
-                </div>
-                <div>
-                    <MobileNav/>
-                </div>
-
-
-                <div className={`bg-primary ${styles.flexStart}`}>
-                    <div className={`${styles.boxWidth}`}>
-                        <Routes>
-                            <Route path="/home" element={<Home />} />
-                            <Route path="/send" element={<Send />} />
-                            <Route path="/swap" element={<Swap />} />
-                            <Route path="/buy" element={<Buy />} />
-                            <Route path="/get" element={<Get/>} />
-                            <Route path="/login" element={<Login/>} />
-                            <Route path="/createWallet" element={<CreateWallet/>} />
-                            <Route path="/camera" element={<Camera/>} />
-                            <Route path="/barcodescanner" element={<BarcodeScanner/>} />
-                            <Route path="/profile" element={<Profile/>} />
-                            <Route path="/card" element={<Card/>} />
-                            <Route path="/buy2" element={<Buy2/>} />
-                            <Route path="/recieve" element={<Receive/>} />
-
-
-                        </Routes>
-                    </div>
-                </div>
-            </div>
-        </BrowserRouter>
-    );
+interface Contact {
+    name: string;
+    tel: string;
+    address?: string;
+    // Add other properties you expect in a contact
 }
 
-export default App;
+interface NavigatorWithContacts extends Navigator {
+    contacts?: {
+        getProperties: () => Promise<string[]>;
+        select: (properties: string[], options: { multiple: boolean }) => Promise<Contact[]>;
+    };
+}
+
+const ContactsComponent: React.FC = () => {
+    useEffect(() => {
+        const requestContacts = async () => {
+            try {
+                if ('contacts' in navigator) {
+                    const navigatorWithContacts = navigator as NavigatorWithContacts;
+
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    const availableProperties = await navigatorWithContacts.contacts.getProperties();
+
+                    if (availableProperties.includes('address')) {
+                        const contactProperties = ['name', 'tel', 'address'];
+
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore
+                        const contacts = await navigatorWithContacts.contacts.select(
+                            contactProperties,
+                            { multiple: true }
+                        );
+
+                        console.log("Your first contact:", contacts[0]?.name, contacts[0]?.tel, contacts[0]?.address);
+                    } else {
+                        console.log("Contact Picker API on your device doesn't support address property");
+                    }
+                } else {
+                    console.log("Your browser doesn't support Contact Picker API");
+                }
+            } catch (error) {
+                console.log("Unexpected error happened in Contact Picker API:", error);
+            }
+        };
+
+        requestContacts();
+    }, []);
+
+    return (
+        <div>
+          <h1>Contacts</h1>
+
+        </div>
+    );
+};
+
+export default ContactsComponent;

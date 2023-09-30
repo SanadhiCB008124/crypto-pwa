@@ -11,8 +11,6 @@ if(!("BarcodeDetector" in window)){
 }
 
 
-
-
 Notification.requestPermission().then((result) => {
     console.log('notification permission', result)
 });
