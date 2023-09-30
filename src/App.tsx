@@ -1,59 +1,79 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 
 interface Contact {
     name: string;
     tel: string;
-    address?: string;
-    // Add other properties you expect in a contact
-}
-
-interface NavigatorWithContacts extends Navigator {
-    contacts?: {
-        getProperties: () => Promise<string[]>;
-        select: (properties: string[], options: { multiple: boolean }) => Promise<Contact[]>;
-    };
 }
 
 const ContactsComponent: React.FC = () => {
-    useEffect(() => {
-        const requestContacts = async () => {
-            try {
-                if ('contacts' in navigator) {
-                    const navigatorWithContacts = navigator as NavigatorWithContacts;
+    const [contacts, setContacts] = useState<Contact[]>([]);
+    const [nameValue, setNameValue] = useState<string>('');
+    const [phoneValue, setPhoneValue] = useState<string>('');
+    const [isContactPickerSupported, setIsContactPickerSupported] = useState<boolean | null>(null);
 
-                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                    // @ts-ignore
-                    const availableProperties = await navigatorWithContacts.contacts.getProperties();
+    const handleContactPicker = async () => {
+        try {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            if ('contacts' in navigator && 'select' in navigator.contacts) {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                const selectedContacts = await navigator.contacts.select(['name', 'tel'], { multiple: true });
 
-                    if (availableProperties.includes('address')) {
-                        const contactProperties = ['name', 'tel', 'address'];
-
-                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                        // @ts-ignore
-                        const contacts = await navigatorWithContacts.contacts.select(
-                            contactProperties,
-                            { multiple: true }
-                        );
-
-                        console.log("Your first contact:", contacts[0]?.name, contacts[0]?.tel, contacts[0]?.address);
-                    } else {
-                        console.log("Contact Picker API on your device doesn't support address property");
-                    }
-                } else {
-                    console.log("Your browser doesn't support Contact Picker API");
+                if (!selectedContacts.length) {
+                    return;
                 }
-            } catch (error) {
-                console.log("Unexpected error happened in Contact Picker API:", error);
-            }
-        };
 
-        requestContacts();
-    }, []);
+                setContacts(prevContacts => [...prevContacts, ...selectedContacts]);
+            } else {
+                setIsContactPickerSupported(false);
+            }
+        } catch (error) {
+            console.error('Error accessing contacts:', error);
+        }
+    };
+
+    const handleAddContact = () => {
+        if (nameValue === '' || phoneValue === '') {
+            // Handle validation or show an error message
+            return;
+        }
+
+        const newContact: Contact = { name: nameValue, tel: phoneValue };
+        setContacts(prevContacts => [...prevContacts, newContact]);
+
+        // Clear input values
+        setNameValue('');
+        setPhoneValue('');
+    };
 
     return (
         <div>
-          <h1>Contacts</h1>
+            <button onClick={handleContactPicker}>Pick Contacts</button>
 
+            {isContactPickerSupported === false && (
+                <p>Your device/browser doesn't support the Contact Picker API.</p>
+            )}
+
+            <ul>
+                {contacts.map((contact, index) => (
+                    <li key={index}>
+                        {contact.name} - {contact.tel}
+                    </li>
+                ))}
+            </ul>
+
+            <div>
+                <label>
+                    Name:
+                    <input type="text" value={nameValue} onChange={(e) => setNameValue(e.target.value)} />
+                </label>
+                <label>
+                    Phone:
+                    <input type="text" value={phoneValue} onChange={(e) => setPhoneValue(e.target.value)} />
+                </label>
+                <button onClick={handleAddContact}>Add Contact</button>
+            </div>
         </div>
     );
 };
