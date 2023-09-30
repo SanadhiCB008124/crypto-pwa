@@ -1,9 +1,11 @@
 import {useEffect, useState} from "react";
 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { storage } from "../firebase";
+
 import * as React from 'react';
 import  {getAuth,signOut, onAuthStateChanged} from "firebase/auth";
+import {collection, query, orderBy, limit, getDocs } from "firebase/firestore";
+import { storage, firestore } from "../firebase";
 
 
 import {Avatar} from "@mui/material";
@@ -28,7 +30,6 @@ const constraints = {
 function Camera() {
     const [videoStream, setVideoStream] = useState<MediaStream | null>(null);
     const [galleryImage, setGalleryImage] = useState<string | null>(null);
-    const [userName, setUserName] = useState<string | null>(null);
     const [userEmail, setUserEmail] = useState<string | null>(null);
     const auth=getAuth();
     const navigate = useNavigate();
@@ -50,7 +51,7 @@ function Camera() {
                 console.log(user);
                 const uid = user.uid;
                 console.log(uid);
-                setUserName(user.displayName);
+
                 setUserEmail(user.email);
             } else {
                 console.log("no user");
@@ -85,24 +86,39 @@ function Camera() {
         }
     };
 
+
     const fetchCurrentProfileImage = async () => {
         try {
-            // Create a reference to the location in Firebase Storage where the profile image is stored.
-            const storageRef = ref(storage, "profile-images/cv image.jpeg"); // Replace with the correct path
+            // Query Firestore to get the latest uploaded image metadata
+            const imagesCollection = collection(firestore, "images"); // Change "images" to your Firestore collection name
+            const q = query(imagesCollection, orderBy("timestamp", "desc"), limit(1));
+            const querySnapshot = await getDocs(q);
 
+            // Check if there are any images
+            if (!querySnapshot.empty) {
+                const latestImageMetadata = querySnapshot.docs[0].data();
+                const imagePath = latestImageMetadata.path;
 
-            const downloadURL = await getDownloadURL(storageRef);
+                // Create a reference to the location in Firebase Storage where the latest image is stored
+                const storageRef = ref(storage, imagePath);
 
+                // Get the download URL for the latest image
+                const downloadURL = await getDownloadURL(storageRef);
 
-            setGalleryImage(downloadURL);
+                // Set the downloaded URL as the gallery image
+                setGalleryImage(downloadURL);
+            } else {
+                console.log("No images found in Firestore.");
+            }
         } catch (error) {
             console.error("Error fetching profile image: ", error);
-
         }
     };
+
     useEffect(() => {
         fetchCurrentProfileImage();
     }, []);
+
 
 
 
@@ -232,20 +248,9 @@ function Camera() {
 
                             <div className="grid grid-cols-12 gap-6 mt-5 mb-5">
 
-                                <div className="bg-gray-200 text-black shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y ">
-                                    <div className=" text-sm text-left p-2">{userName}</div>
-                                </div>
+
                                 <div className=" bg-gray-200 text-black shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y ">
                                     <div className=" text-sm text-left p-2">{userEmail}</div>
-                                </div>
-                            </div>
-                            <div
-                                className=" shadow-xl bg-gray-700 rounded-2xl text-white col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
-                                <div className="p-5   ">
-                                    <div className=" text-xl font-bold leading-8">Your Wallet Balance</div>
-                                    <div className="flex justify-between ">
-                                        <div className="mt-3 text-3xl leading-8 ">$ 6, 200.34</div>
-                                    </div>
                                 </div>
                             </div>
                             <div className="p-3 mt-10 bg-gray-700 text-white rounded-2xl">My wallet</div>
