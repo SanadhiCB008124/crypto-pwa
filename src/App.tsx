@@ -51,8 +51,8 @@ function App() {
                             <Route path="/barcodescanner" element={<BarcodeScanner/>} />
                             <Route path="/profile" element={<Profile/>} />
                             <Route path="/card" element={<Card/>} />
-                            <Route path="/buy2" element={<Buy2/>} />
-                            <Route path="/recieve" element={<Receive/>} />
+                            <Route path="/buy2/:cryptoName" element={<Buy2/>} />
+                            <Route path="/receive/:cryptoName" element={<Receive/>} />
                             <Route path="/test" element={<Test/>} />
 
 

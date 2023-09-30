@@ -29,7 +29,7 @@ function Swap() {
                                         </label>
                                         <input
                                             type="text"
-                                            placeholder="Send to"
+                                            placeholder="amount"
                                             className="border rounded-lg py-3 px-3 mt-4 bg-black border-primary-500  placeholder-white-500 text-white"
                                         />
                                         <label className="font-bold text-lg text-white">To:</label>

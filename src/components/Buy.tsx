@@ -62,7 +62,8 @@ const Buy = () => {
 <div className="flex min-w-0 gap-x-4">
             <img src={crypto.image} alt={crypto.name} className="h-12 w-12 flex-none rounded-full bg-primary"/>
             <div className="min-w-0 flex-auto">
-                <Link to="/buy2" >        <p className="text-sm font-semibold leading-6 text-white">
+                <Link to={`/buy2/${crypto.name}`}  >
+                    <p className="text-sm font-semibold leading-6 text-white">
                                     {crypto.name}
                 </p></Link>
                                 <p> {crypto.symbol}</p>

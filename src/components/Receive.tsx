@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import bgImg from "../assets/splash4.jpg";
 import qr from "../assets/qr.png";
+import { useParams } from 'react-router-dom';
+
 
 interface Contact {
     name: string;
     tel: string;
 }
 
-const Recieve: React.FC = () => {
+const Receive: React.FC = () => {
+
+    const { cryptoName } = useParams();
+
     const [contacts, setContacts] = useState<Contact[]>([]);
     const [nameValue, setNameValue] = useState<string>('');
     const [phoneValue, setPhoneValue] = useState<string>('');
@@ -74,7 +79,7 @@ const Recieve: React.FC = () => {
                                             <img src={qr}></img>
                                         </div>
                                         <div>
-                                            Send me Bitcoin to this address
+                                            Send me {cryptoName} to this address
                                         </div>
 
                                         <input
@@ -165,4 +170,4 @@ const Recieve: React.FC = () => {
     );
 };
 
-export default Recieve;
+export default Receive;
