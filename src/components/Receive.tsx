@@ -1,10 +1,55 @@
 
-
 import React from "react";
 import bgImg from "../assets/splash4.jpg";
-
 import qr from "../assets/qr.png";
+import { useState } from "react";
+
+interface Contact {
+    name:string;
+    tel:string;
+}
 const Receive:React.FC=()=>{
+
+    const [contacts, setContacts] = useState<Contact[]>([]);
+    const [nameValue, setNameValue] = useState<string>('');
+    const [phoneValue, setPhoneValue] = useState<string>('');
+    const [isContactPickerSupported, setIsContactPickerSupported] = useState<boolean | null>(null);
+
+    const handleContactPicker = async () => {
+        try {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            if ('contacts' in navigator && 'select' in navigator.contacts) {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                const selectedContacts = await navigator.contacts.select(['name', 'tel'], { multiple: true });
+
+                if (!selectedContacts.length) {
+                    return;
+                }
+
+                setContacts(prevContacts => [...prevContacts, ...selectedContacts]);
+            } else {
+                setIsContactPickerSupported(false);
+            }
+        } catch (error) {
+            console.error('Error accessing contacts:', error);
+        }
+    };
+
+    const handleAddContact = () => {
+        if (nameValue === '' || phoneValue === '') {
+            // Handle validation or show an error message
+            return;
+        }
+
+        const newContact: Contact = { name: nameValue, tel: phoneValue };
+        setContacts(prevContacts => [...prevContacts, newContact]);
+
+        // Clear input values
+        setNameValue('');
+        setPhoneValue('');
+    };
     return (
         <div
             className=" w-full bg-primary h-full  flex-auto items-center justify-center p-10 overflow-hidden text-white bg-no-repeat bg-cover "
@@ -34,6 +79,19 @@ const Receive:React.FC=()=>{
                                             placeholder="set amount"
                                             className="border rounded-lg py-3 px-3 bg-black border-primary-500  placeholder-white-500 text-white"
                                         />
+                                        <label>
+                                            Sender
+                                            <input type="text" value={nameValue} onChange={(e) => setNameValue(e.target.value)} />
+
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            placeholder="set amount"
+                                         value={phoneValue} onChange={(e) => setPhoneValue(e.target.value)}
+
+                                            className="border rounded-lg py-3 px-3 bg-black border-primary-500  placeholder-white-500 text-white"
+                                        />
                                         <div className="flex flex-row flex-wrap space-x-4 justify-center">
                                             <button
                                                 className="border border-primary-500 bg-green-950 text-white rounded-lg py-3 px-4 font-semibold"
@@ -52,7 +110,7 @@ const Receive:React.FC=()=>{
                                             </button>
                                             <button
                                                 className="border border-primary-500 bg-green-950 text-white rounded-lg py-3 px-4 font-semibold"
-
+                                               onClick={handleContactPicker}
                                             >
                                                 <div className="flex flex-row space-x-2">
                                                     <div>
@@ -64,10 +122,23 @@ const Receive:React.FC=()=>{
                                                     </div>
                                                 </div>
                                             </button>
+                                            {isContactPickerSupported === false && (
+                                                <p>Your device/browser doesn't support the Contact Picker API.</p>
+                                            )}
+
+                                            <ul>
+                                                {contacts.map((contact, index) => (
+                                                    <li key={index}>
+                                                        {contact.name} - {contact.tel}
+                                                    </li>
+                                                ))}
+                                            </ul>
+
                                         </div>
 
 
                                     </form>
+                                    <button onClick={handleAddContact}>Add Contact</button>
                                 </div>
                             </div>
                         </div>

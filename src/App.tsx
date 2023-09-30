@@ -1,81 +1,65 @@
-import React, { useState } from 'react';
 
-interface Contact {
-    name: string;
-    tel: string;
+import './App.css';
+
+import Navbar from "./components/Navbar.tsx";
+import Home from "./components/Home/Home.tsx"; // Import your Home component
+import {BrowserRouter, Routes, Route, } from "react-router-dom";
+
+import styles from './style.tsx';
+import Send from "./components/Send.tsx";
+import Swap from "./components/Swap.tsx";
+import Buy from "./components/Buy.tsx";
+import Buy2 from "./components/Buy2.tsx";
+import Login from "./components/Login.tsx";
+import CreateWallet from "./components/CreateWallet.tsx";
+import Camera from "./components/Camera.tsx";
+import BarcodeScanner from "./components/BarcodeScanner.tsx";
+import Profile from "./components/Profile.tsx";
+import MobileNav from "./components/MobileNav.tsx";
+import Get from "./components/Get.tsx";
+import Card from "./components/Card.tsx";
+import Receive from './components/Receive.tsx';
+function App() {
+    return (
+        <BrowserRouter>
+
+            <div className="bg-primary w-full overflow-hidden  ">
+                <div className={`${styles.paddingX} ${styles.flexCenter}  `}>
+
+                    <div className={`${styles.boxWidth} `}>
+                        <Navbar/>
+                    </div>
+
+                </div>
+                <div>
+                    <MobileNav/>
+                </div>
+
+
+                <div className={`bg-primary ${styles.flexStart}`}>
+                    <div className={`${styles.boxWidth}`}>
+                        <Routes>
+                            <Route path="/home" element={<Home />} />
+                            <Route path="/send" element={<Send />} />
+                            <Route path="/swap" element={<Swap />} />
+                            <Route path="/buy" element={<Buy />} />
+                            <Route path="/get" element={<Get/>} />
+                            <Route path="/login" element={<Login/>} />
+                            <Route path="/createWallet" element={<CreateWallet/>} />
+                            <Route path="/camera" element={<Camera/>} />
+                            <Route path="/barcodescanner" element={<BarcodeScanner/>} />
+                            <Route path="/profile" element={<Profile/>} />
+                            <Route path="/card" element={<Card/>} />
+                            <Route path="/buy2" element={<Buy2/>} />
+                            <Route path="/recieve" element={<Receive/>} />
+
+
+                        </Routes>
+                    </div>
+                </div>
+            </div>
+        </BrowserRouter>
+    );
 }
 
-const ContactsComponent: React.FC = () => {
-    const [contacts, setContacts] = useState<Contact[]>([]);
-    const [nameValue, setNameValue] = useState<string>('');
-    const [phoneValue, setPhoneValue] = useState<string>('');
-    const [isContactPickerSupported, setIsContactPickerSupported] = useState<boolean | null>(null);
-
-    const handleContactPicker = async () => {
-        try {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            if ('contacts' in navigator && 'select' in navigator.contacts) {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                const selectedContacts = await navigator.contacts.select(['name', 'tel'], { multiple: true });
-
-                if (!selectedContacts.length) {
-                    return;
-                }
-
-                setContacts(prevContacts => [...prevContacts, ...selectedContacts]);
-            } else {
-                setIsContactPickerSupported(false);
-            }
-        } catch (error) {
-            console.error('Error accessing contacts:', error);
-        }
-    };
-
-    const handleAddContact = () => {
-        if (nameValue === '' || phoneValue === '') {
-            // Handle validation or show an error message
-            return;
-        }
-
-        const newContact: Contact = { name: nameValue, tel: phoneValue };
-        setContacts(prevContacts => [...prevContacts, newContact]);
-
-        // Clear input values
-        setNameValue('');
-        setPhoneValue('');
-    };
-
-    return (
-        <div>
-            <button onClick={handleContactPicker}>Pick Contacts</button>
-
-            {isContactPickerSupported === false && (
-                <p>Your device/browser doesn't support the Contact Picker API.</p>
-            )}
-
-            <ul>
-                {contacts.map((contact, index) => (
-                    <li key={index}>
-                        {contact.name} - {contact.tel}
-                    </li>
-                ))}
-            </ul>
-
-            <div>
-                <label>
-                    Name:
-                    <input type="text" value={nameValue} onChange={(e) => setNameValue(e.target.value)} />
-                </label>
-                <label>
-                    Phone:
-                    <input type="text" value={phoneValue} onChange={(e) => setPhoneValue(e.target.value)} />
-                </label>
-                <button onClick={handleAddContact}>Add Contact</button>
-            </div>
-        </div>
-    );
-};
-
-export default ContactsComponent;
+export default App;
