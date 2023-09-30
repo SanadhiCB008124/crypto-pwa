@@ -19,6 +19,7 @@ import MobileNav from "./components/MobileNav.tsx";
 import Get from "./components/Get.tsx";
 import Card from "./components/Card.tsx";
 import Receive from './components/Receive.tsx';
+import Test from "./components/Test.tsx";
 function App() {
     return (
         <BrowserRouter>
@@ -52,6 +53,7 @@ function App() {
                             <Route path="/card" element={<Card/>} />
                             <Route path="/buy2" element={<Buy2/>} />
                             <Route path="/recieve" element={<Receive/>} />
+                            <Route path="/test" element={<Test/>} />
 
 
                         </Routes>
