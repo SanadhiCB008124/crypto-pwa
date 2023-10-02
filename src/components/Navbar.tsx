@@ -81,7 +81,7 @@ export default function Navbar() {
                         </li>
                         <li  className="font-poppins text-primary-500 hover:text-white active:text-white font-small cursor-pointer text-[16px]
                                 ">
-                            <NavLink to="/login" >
+                            <NavLink to="/" >
                             <label>Login</label>
                         </NavLink>
                         </li>
@@ -173,7 +173,7 @@ export default function Navbar() {
                                     <label>Register</label>
                                 </NavLink></li>
                                 <li className="font-poppins text-primary-500 font-medium cursor-pointer text-[16px] pr-4 pb-4 ml-0
-                              "><NavLink to="/login" >
+                              "><NavLink to="/" >
                                     <label>Login</label>
                                 </NavLink>
 

@@ -7,7 +7,7 @@ function SplashScreen() {
 
     const login = () => {
         console.log('login');
-        navigate('/login');
+        navigate('/');
     };
 
     const register = () => {

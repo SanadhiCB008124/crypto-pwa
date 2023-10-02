@@ -5,7 +5,7 @@ import {ManifestOptions, VitePWA} from 'vite-plugin-pwa'
 const manifestForPlugin :Partial<ManifestOptions> ={
   name: "crypto-pwa",
   short_name: "crypto-pwa",
-  start_url: "/crypto-pwa/",
+  start_url: "/",
   scope: "./",
   display: "standalone",
   background_color: "#000000",
