@@ -2,14 +2,24 @@
 
 import bgImg from "../assets/splash4.jpg"
 import {Link, useParams} from 'react-router-dom';
-import coin from "*.png";
+import coin from "../assets/coin.jpg";
+
+import {useState} from "react";
+
+type Currency = "USD" | "EURO" | "YEN" | "EUD";
 
 
 
 function Buy2() {
     const { cryptoName } = useParams();
 
-    const showNotification = () => {
+    const [selectedCurrency, setSelectedCurrency] = useState<Currency | null>(null);
+
+    const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedCurrency(event.target.value as Currency);
+    }
+
+        const showNotification = () => {
         if ('serviceWorker' in navigator && 'PushManager' in window) {
             navigator.serviceWorker.ready.then((registration) => {
                 const title = "You have bought crypto successfully !";
@@ -41,23 +51,27 @@ function Buy2() {
                             <div className="bg-primary flex flex-col w-70 border-2 border-primary-500 rounded-3xl px-8 py-10">
 
                                 <form className="flex flex-col space-y-8 mt-10">
-                                    <details className="dropdown mb-10">
-                                        <summary className="m-1  bg-black  py-2 px-4 rounded-2xl ">Currency</summary>
-                                        <ul className="p-2 shadow menu dropdown-content z-[1] bg-black rounded-box w-52">
-                                            <li><a className="hover:bg-white hover:text-black">USD</a></li>
-                                            <li><a className="hover:bg-white hover:text-black">EURO</a></li>
-                                            <li><a className="hover:bg-white hover:text-black">YEN</a></li>
-                                            <li><a className="hover:bg-white hover:text-black">EUD</a></li>
+                                    <select
+                                    className="dropdown mb-10 bg-black border-2 border-white p-2 rounded-full  text-white"
+                                    value={selectedCurrency || ""}
+                                    onChange={handleCurrencyChange}
+                                >
+                                    <option value="" className="m-1 bg-black py-2 px-4 rounded-2xl">
+                                        Currency
+                                    </option>
+                                    {["USD", "EURO", "YEN", "EUD"].map((currency) => (
+                                        <option key={currency} value={currency} className="hover:bg-white hover:text-black">
+                                            {currency}
+                                        </option>
+                                    ))}
+                                </select>
 
-
-                                        </ul>
-                                    </details>
                                     <div className="text-xl font-bold" >
                                         <p>{cryptoName}</p>
 
                                     </div>
 
-                                    <details className="dropdown mb-2 w-full ">
+                                    <details className="dropdown mb-2 w-full border-2 border-white rounded-full ">
                                         <summary className="m-1 bg-black text-sm  py-2 px-4 rounded-2xl ">Select Payment Method</summary>
                                         <ul className="p-2 shadow menu dropdown-content z-[1] bg-black rounded-box w-52">
                                             <Link to="/card" >

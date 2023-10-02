@@ -44,6 +44,21 @@ const Transactions: React.FC = () => {
                         </div>
 
                     </li>
+                    <li  className="flex justify-between gap-x-6 py-5">
+                        <div className="flex min-w-0 gap-x-4">
+                            <div className="min-w-0 flex-auto">
+                                <p className="text-sm font-semibold leading-6 text-white">
+                                    Mike Tyke
+                                </p>
+                                <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#2f5da7"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="arrow-down-left"> <g> <polyline data-name="Right" fill="none" id="Right-2" points="5.3 11.6 5.3 18.7 12.4 18.7" stroke="#2f5da7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polyline> <line fill="none" stroke="#2f5da7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="18.7" x2="6.9" y1="5.3" y2="17.1"></line> </g> </g> </g> </g></svg>
+                            </div>
+                        </div>
+                        <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
+                            <p className="text-sm leading-6 text-red-400">1.00 BNB</p>
+
+                        </div>
+
+                    </li>
 
                 </ul>
             </div>

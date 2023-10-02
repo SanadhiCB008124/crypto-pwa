@@ -14,7 +14,7 @@ function AboutUs() {
                             <h2 className="text-1xl  leading-relaxed md:leading-snug mb-2">
                                 Seamless crypto, secure transactions
                             </h2>
-                            <p className="text-md mt-6 mb-9 ">
+                            <p className="text-white text-md mt-6 mb-9 ">
                                 We take pride in revolutionizing the way you interact with cryptocurrencies.
                                 At the heart of our fintech platform is a seamless experience that empowers you to effortlessly send, buy,
                                 receive, and swap cryptocurrencies, all in one place. Whether you're a seasoned crypto enthusiast or just

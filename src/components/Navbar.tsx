@@ -105,7 +105,7 @@ export default function Navbar() {
                 <div
                     className={`${
                         !toggle ? "hidden" : "flex"
-                    } p-6 bg-black  absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
+                    } p-6 bg-black bg-gradient-to-r from-black to-gray-800 absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
                 >
                     <ul className="list-none flex justify-end items-start flex-1 flex-col m-3">
 

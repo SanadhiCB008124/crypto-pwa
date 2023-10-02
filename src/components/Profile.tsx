@@ -249,7 +249,7 @@ function Camera() {
                             <div className="grid grid-cols-12 gap-6 mt-5 mb-5">
 
 
-                                <div className=" bg-gray-200 text-black shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y ">
+                                <div className=" bg-black border-2 border-primary-500 p-3 text-white shadow-xl rounded-2xl col-span-12 sm:col-span-6 xl:col-span-3 intro-y ">
                                     <div className=" text-sm text-left p-2">{userEmail}</div>
                                 </div>
                             </div>

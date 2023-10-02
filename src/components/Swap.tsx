@@ -1,6 +1,6 @@
 
 
-import styles from "../style.tsx";
+
 import bgImg from "../assets/splash4.jpg"
 import { collection, getDocs } from 'firebase/firestore';
 
@@ -60,8 +60,8 @@ function Swap() {
                         <div className="lg:text-left text-center">
                             <div className="flex items-center justify-center">
                                 <div className="bg-primary flex flex-col w-70 border-2 border-primary-500 rounded-3xl px-8 py-10">
-                                    <h2 className={styles.heading1}>
-                                        Swap
+                                    <h2 className="text-2xl font-bold text-white text-center">
+                                        Swap Crypto
                                     </h2>
                                     <form className="flex flex-col space-y-8 mt-10">
 

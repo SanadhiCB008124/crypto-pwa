@@ -6,7 +6,7 @@ import styles from "../style.tsx";
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../firebase';
 import {useEffect, useState} from "react";
-import coin from "*.png"; // Import the initialized Firestore instance
+import coin from "../assets/coin.jpg";
 
 
 type Crypto = {
@@ -86,14 +86,14 @@ function Send() {
                                 <h2 className={styles.heading1}>
                                         Send
                                     </h2>
-                                    <form className="flex flex-col space-y-8 mt-10">
+                                    <form className="flex flex-col space-y-8 mt-4">
                                         <label className="font-bold text-lg text-left text-white">
                                             Send To:
                                         </label>
                                         <input
                                             type="text"
                                             placeholder="Send to"
-                                            className="border rounded-lg py-3 px-3 mt-4 bg-black border-primary-500 placeholder-white-500 text-white"
+                                            className="border rounded-lg py-3 px-3 mt-2 bg-black border-primary-500 placeholder-white-500 text-white"
                                         />
                                         <Link to="/BarcodeScanner">
                                         <div style={{ position: 'relative', display: 'inline-block', left:"40%",}}>

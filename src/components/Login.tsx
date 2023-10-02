@@ -10,6 +10,7 @@ import styles from "../style.tsx";
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error,setError]=useState<string|null>(null);
     const navigate = useNavigate();
 
      const showWelcomeNotification = () => {
@@ -38,6 +39,7 @@ const Login: React.FC = () => {
 
     } catch (error) {
      console.log(error);
+     setError('Invalid Email or password ');
     }
   };
 
@@ -71,6 +73,9 @@ const Login: React.FC = () => {
                                       </h4>
                                   </div>
                                   <form>
+                                      {error &&(
+                                          <div className="mb-4 text-red-500 text center"> {error}</div>
+                                      )}
                                       <p className="mb-4 text-white">Please login to your account</p>
                                       <div className="mb-4 flex flex-col" >
 
@@ -120,8 +125,8 @@ const Login: React.FC = () => {
                                               Log in
                                           </button><br/>
 
-                                          <button className=" text-white bg-green-950 w-full mt-4  py-3 px-4 rounded-xl">
-                                              <Link to="/CreateWallet" >
+                                          <button className=" text-white border-2 border-primary-500 bg-green-950 w-full mt-4  py-3 px-4 rounded-xl">
+                                              <Link to="/createWallet" >
                                                   No account? Register here
                                               </Link>
                                           </button>

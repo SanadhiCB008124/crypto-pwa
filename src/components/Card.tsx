@@ -15,7 +15,7 @@ function Card() {
                 <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0">
 
                     <div>
-                        <div className="lg:text-left text-center">
+                        <div className="text-left ">
                             <div className="flex items-center justify-center">
                                 <div className="bg-primary flex flex-col w-70 border-2 border-primary-500 rounded-3xl px-8 py-10">
                                     <h2 className="text-3xl sm:text-xl">
@@ -28,7 +28,7 @@ function Card() {
                                             placeholder="visa"
                                             className="border rounded-lg py-3 px-3 bg-black border-primary-500 placeholder-white-500 text-white"
                                         />
-                                        <label className="leading-loose">Card Number</label>
+                                        <label className="text-left">Card Number</label>
                                         <input
                                             type="text"
                                             placeholder="XXXX XXXX XXXX XXXX"
@@ -36,8 +36,8 @@ function Card() {
                                         />
                                         <div className="flex flex-row items-center space-x-4">
                                             <div >
-                                                <label className="leading-loose">Exp Month</label>
-                                                <div className="relative focus-within:text-gray-600 text-white">
+                                                <label className=" text-left">Exp Month</label>
+                                                <div className="relative mt-1 focus-within:text-gray-600  text-white">
                                                     <input type="text" className="pr-4 pl-10 bg-black py-2 border focus:ring-gray-500 focus:border-primary-500 w-full sm:text-sm border-primary-500 rounded-md focus:outline-none placeholder-white-500 text-white" placeholder="XX" />
 
                                                     <div className="absolute left-3 top-2">
@@ -46,8 +46,8 @@ function Card() {
                                                 </div>
                                             </div>
                                             <div >
-                                                <label className="leading-loose">Exp Year</label>
-                                                <div className="relative focus-within:text-gray-600 text-white">
+                                                <label className="text-left">Exp Year</label>
+                                                <div className="relative mt-1 focus-within:text-gray-600 text-white">
                                                     <input type="text" className="pr-4 pl-10 bg-black py-2 border focus:ring-gray-500 focus:border-primary-500 w-full sm:text-sm border-primary-500 rounded-md focus:outline-none placeholder-white-500 text-white" placeholder="XX" />
 
                                                     <div className="absolute left-3 top-2">
@@ -56,7 +56,7 @@ function Card() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <label className="leading-loose">CVV</label>
+                                        <label className="text-left mb-0">CVV</label>
                                         <input
                                             type="text"
                                             placeholder="XXX"

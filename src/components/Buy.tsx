@@ -55,7 +55,7 @@ const Buy = () => {
 
 
     <div className='w-full'>
-      <h2 className="text-primary-500">Cryptocurrencies</h2>
+      <h2 className="text-primary-500 text-lg">Cryptocurrencies</h2>
       <ul role="list" className="divide-ymt-10">
         {cryptos.map((crypto) => (
           <li key={crypto.id} className="flex justify-between gap-x-6 py-5">
