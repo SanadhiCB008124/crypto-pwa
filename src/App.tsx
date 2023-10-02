@@ -28,12 +28,14 @@ function App() {
 
     const handlePage = () => {
         if (!user) {
-             console.log('user not authenticated');
-           return <Navigate to="/login" />;
-      }
-    };
-
-
+            return (
+                <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/createWallet" element={<CreateWallet />} />
+                    <Route path="/*" element={<Navigate to="/login" />} />
+                </Routes>
+            );
+        } else {
     return (
         <div className="bg-primary w-full overflow-hidden">
             {handlePage()}
@@ -76,6 +78,13 @@ function App() {
         </div>
 
     );
-}
+        }
+    };
 
+    return (
+        <div className="bg-primary w-full overflow-hidden">
+            {handlePage()}
+        </div>
+    );
+}
 export default App;
