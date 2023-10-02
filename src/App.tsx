@@ -1,4 +1,3 @@
-
 import './App.css';
 
 import Navbar from "./components/Navbar.tsx";
@@ -26,26 +25,18 @@ import AboutUs from "./components/About.tsx";
 function App() {
     const { user } = useAuth();
 
-    const handlePage = () => {
-        if (!user) {
-            return (
-                <Routes>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/createWallet" element={<CreateWallet />} />
-                    <Route path="/*" element={<Navigate to="/login" />} />
-                </Routes>
-            );
-        } else {
+
+
     return (
         <div className="bg-primary w-full overflow-hidden">
-            {handlePage()}
-            <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-                {user && (
+
+            {user && (
+                <div className={`${styles.paddingX} ${styles.flexCenter}`}>
                     <div className={`${styles.boxWidth}`}>
                         <Navbar />
                     </div>
-                )}
-            </div>
+                </div>
+            )}
             <div>
                 {user && <MobileNav />}
             </div>
@@ -56,6 +47,7 @@ function App() {
             <div className={`bg-primary ${styles.flexStart}`}>
                 <div className={`${styles.boxWidth}`}>
                     <Routes>
+                        <Route path="/" element={<Login />} />
                         <Route path="/home" element={<Home />} />
                         <Route path="/send" element={<Send />} />
                         <Route path="/swap" element={<Swap />} />
@@ -78,13 +70,6 @@ function App() {
         </div>
 
     );
-        }
-    };
-
-    return (
-        <div className="bg-primary w-full overflow-hidden">
-            {handlePage()}
-        </div>
-    );
 }
+
 export default App;

@@ -83,7 +83,7 @@ const Login: React.FC = () => {
                                               htmlFor="email"
                                               className="text-left mb-2"
                                           >
-                                              Username
+                                              Email
                                           </label>
                                           <input
                                               type="text"
