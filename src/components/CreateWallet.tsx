@@ -3,22 +3,24 @@ import React, {useState} from "react";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import  coin from "/src/assets/logo.png"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import bgImg from "../assets/splash4.jpg"
 import styles from "../style.tsx";
 
 const CreateWallet: React.FC = () => {
   const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-   
+  const navigate = useNavigate();
 
-    const handleRegister=async()=>{
+
+  const handleRegister=async()=>{
         event?.preventDefault();
         await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
       
         const user = userCredential.user;
         console.log(user);
+        navigate("/home");
        
       
       })

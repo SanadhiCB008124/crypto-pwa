@@ -4,6 +4,11 @@ import { Link,useNavigate } from 'react-router-dom';
 const MobileNav: React.FC = () => {
     const navigate = useNavigate();
 
+
+    const Navigate = () => {
+        navigate("/get");
+    }
+
     return (
         <div className="mobile-nav flex flex-col items-center space-y-4 mb-4  ">
 
@@ -14,12 +19,21 @@ const MobileNav: React.FC = () => {
             </div>
             <div className="flex flex-row space-x-2">
                 <div className="bg-black border-primary-500 border-2  p-2 rounded-2xl ">
-                <button className="text-white bg-primary bg-transparent">
-                    <Link to="/get" >
-                        <svg  width="40px" height="50px"  viewBox="-3.12 -3.12 30.24 30.24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#508F81" stroke-width="1.464"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.00004 15.7468V18C5.00004 18.5523 5.44775 19 6.00004 19H12H18C18.5523 19 19 18.5523 19 18V15.7468" stroke="#508F81" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12.2023 13.5L12.2023 5" stroke="#508F81" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M15.546 11.1497L12.2021 14.4165L8.85831 11.1497" stroke="#508F81" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                   <label className="font-xs">Get</label>
-                    </Link>
-                </button>
+                    <button className="text-white bg-primary bg-transparent" onClick={() => Navigate()}>
+
+                            <svg width="40px" height="50px" viewBox="-3.12 -3.12 30.24 30.24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#508F81" stroke-width="1.464">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path d="M5.00004 15.7468V18C5.00004 18.5523 5.44775 19 6.00004 19H12H18C18.5523 19 19 18.5523 19 18V15.7468" stroke="#508F81" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M12.2023 13.5L12.2023 5" stroke="#508F81" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M15.546 11.1497L12.2021 14.4165L8.85831 11.1497" stroke="#508F81" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </g>
+                            </svg>
+                            <label className="font-xs">Get</label>
+
+                    </button>
+
                 </div>
 
 

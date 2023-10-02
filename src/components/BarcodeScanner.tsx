@@ -39,7 +39,7 @@ function BarcodeScanner() {
     }
 
     return (
-        <div className="App">
+        <div className="App bg-primary h-screen">
             <h1>QR Scanning Code</h1>
             {scanResult ? (
                 <div>
