@@ -108,6 +108,7 @@ const CreateWallet: React.FC = () => {
                             type="button"
                             data-te-ripple-init
                             data-te-ripple-color="light"
+                            onClick={handleRegister}
                         >
                           Create Your Wallet
                         </button><br/>

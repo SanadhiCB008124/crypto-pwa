@@ -12,19 +12,19 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    // const showWelcomeNotification = () => {
-    //     if ('serviceWorker' in navigator && 'PushManager' in window) {
-    //         navigator.serviceWorker.ready.then((registration) => {
-    //             const title = "Welcome to Zenith Pay";
-    //             const options = {
-    //                 body: "You are now logged in.",
-    //                 icon:coin, // Replace with your icon path
-    //             };
-    //
-    //             registration.showNotification(title, options);
-    //         });
-    //     }
-    // };
+     const showWelcomeNotification = () => {
+         if ('serviceWorker' in navigator && 'PushManager' in window) {
+            navigator.serviceWorker.ready.then((registration) => {
+                const title = "Welcome to Zenith Pay";
+                const options = {
+                    body: "You are now logged in.",
+                 icon:coin, // Replace with your icon path
+                };
+
+                registration.showNotification(title, options);
+         });
+         }
+};
   const handleLogin = async () => {
     event?.preventDefault();
     try {
@@ -33,6 +33,7 @@ const Login: React.FC = () => {
       const user = userCredential.user;
       console.log(user);
 
+      showWelcomeNotification();
       navigate("/home");
 
     } catch (error) {
