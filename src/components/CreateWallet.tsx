@@ -114,7 +114,7 @@ const CreateWallet: React.FC = () => {
                         <button
                             className=" text w-full hover:text-primary-500 white bg-green-950 mt-4 py-3 px-4 rounded-xl"
                         >
-                          <Link to="/Login" >
+                          <Link to="/login" >
                             Already Registered ? Login
                           </Link>
                         </button>

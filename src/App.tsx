@@ -21,20 +21,20 @@ import Card from "./components/Card.tsx";
 import Receive from './components/Receive.tsx';
 import Test from "./components/Test.tsx";
 import SuccessMessage from "./components/SuccessMessage.tsx";
-import { useAuth } from './AuthContext.tsx';
+
 function App() {
 
-    const { user } = useAuth();
+
     return (
 
 
         <div className="bg-primary w-full overflow-hidden">
             <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-                {user && <div className={`${styles.boxWidth}`}>
+              <div className={`${styles.boxWidth}`}>
                     <Navbar />
-                </div>}
+                </div>
             </div>
-            {user && <div><MobileNav /></div>}
+            <div><MobileNav /></div>
 
 
 
