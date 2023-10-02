@@ -30,13 +30,13 @@ function App() {
     return (
         <div className="bg-primary w-full overflow-hidden">
 
-            {user && (
+
                 <div className={`${styles.paddingX} ${styles.flexCenter}`}>
                     <div className={`${styles.boxWidth}`}>
                         <Navbar />
                     </div>
                 </div>
-            )}
+
             <div>
                 {user && <MobileNav />}
             </div>
