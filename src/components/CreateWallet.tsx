@@ -12,6 +12,20 @@ const CreateWallet: React.FC = () => {
     const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const showWelcomeNotification = () => {
+    if ('serviceWorker' in navigator && 'PushManager' in window) {
+      navigator.serviceWorker.ready.then((registration) => {
+        const title = "Welcome to Zenith Pay";
+        const options = {
+          body: "You are now a registered user.",
+          icon:coin, // Replace with your icon path
+        };
+
+        registration.showNotification(title, options);
+      });
+    }
+  };
+
 
   const handleRegister=async()=>{
         event?.preventDefault();
@@ -21,6 +35,7 @@ const CreateWallet: React.FC = () => {
         const user = userCredential.user;
         console.log(user);
         navigate("/home");
+        showWelcomeNotification();
        
       
       })
@@ -68,7 +83,7 @@ const CreateWallet: React.FC = () => {
                             className="text-left mb-2"
 
                         >
-                          Username
+                          Email
                         </label>
                         <input
                             type="text"

@@ -24,7 +24,7 @@ const Login: React.FC = () => {
                 registration.showNotification(title, options);
          });
          }
-};
+     };
   const handleLogin = async () => {
     event?.preventDefault();
     try {

@@ -43,12 +43,20 @@ export default function Navbar() {
 
 
                         </li>
+                        <li
+
+                            className="font-poppins active:text-white text-primary-500 hover:text-white active:text-white  font-small cursor-pointer text-[16px]  space-x-4"
+
+                        >
+                            <NavLink to="/aboutUs" >
+                                <label>About Us</label>
+                            </NavLink>
+
+
+                        </li>
 
 
 
-
-                        <li  className="font-poppins text-primary-500  hover:text-white  font-small cursor-pointer text-[16px]
-                                ">Settings</li>
 
                         <li className="font-poppins text-primary-500 hover:text-white  font-small cursor-pointer text-[16px]
                                 ">
@@ -126,12 +134,23 @@ export default function Navbar() {
 
 
                                 </li>
+                                <li
+
+                                    className="font-poppins  text-primary-500 hover:text-white font-medium cursor-pointer text-[16px] pr-4 pb-4 ml-0
+                              "
+                                >
+                                    <NavLink to="/aboutUs" >
+                                        <label>About Us</label>
+                                    </NavLink>
+
+
+                                </li>
 
 
 
 
-                                <li  className="font-poppins text-primary-500 hover:text-white font-medium cursor-pointer text-[16px] pr-4 pb-4 ml-0
-                              ">Settings</li>
+
+                               
 
                                 <li className="font-poppins text-primary-500 hover:text-white font-medium cursor-pointer text-[16px] pr-4 pb-4 ml-0
                               ">

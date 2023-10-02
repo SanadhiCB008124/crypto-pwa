@@ -3,12 +3,46 @@
 import bgImg from "../assets/splash4.jpg"
 import {Link, useNavigate} from 'react-router-dom';
 import styles from "../style.tsx";
+import { collection, getDocs } from 'firebase/firestore';
+import { firestore } from '../firebase';
+import {useEffect, useState} from "react"; // Import the initialized Firestore instance
 
 
+type Crypto = {
+    id: string;
+    name: string;
+    symbol: string;
+    image: string;
+    amount:string;
 
-
+};
 
 function Send() {
+    const [cryptos, setCryptos] = useState<Crypto[]>([]);
+    const [selectedCrypto, setSelectedCrypto] = useState<string | null>(null);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(firestore, 'Mycrypto'));
+                const cryptoData: Crypto[] = [];
+
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data() as Crypto; // Cast data as Crypto type
+
+                    cryptoData.push({
+                        ...data, // Remove 'id' from here
+                    });
+                });
+
+
+                setCryptos(cryptoData);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
     const navigate = useNavigate();
 
     const showSuccessMessage = () => {
@@ -34,10 +68,10 @@ function Send() {
                             <div className="flex items-center justify-center ">
                                 <div className="bg-primary flex flex-col  w-70 border-2 border-primary-500 rounded-3xl px-8 py-10">
                                 <h2 className={styles.heading1}>
-                                        Send Ethereum
+                                        Send
                                     </h2>
                                     <form className="flex flex-col space-y-8 mt-10">
-                                        <label className="font-bold text-lg text-white">
+                                        <label className="font-bold text-lg text-left text-white">
                                             Send To:
                                         </label>
                                         <input
@@ -65,7 +99,19 @@ function Send() {
 
 
 
-                                        <label className="font-bold text-lg text-white">Amount</label>
+                                        <label className="font-bold text-left text-lg text-white">Amount</label>
+                                        <select
+                                            className="border rounded-lg py-3 px-3 mb-4 bg-black border-primary-500 placeholder-white-500 text-white"
+                                            value={selectedCrypto || ''}
+                                            onChange={(e) => setSelectedCrypto(e.target.value)}
+                                        >
+                                            <option value="" disabled>Select a cryptocurrency</option>
+                                            {cryptos.map((crypto) => (
+                                                <option key={crypto.id} value={crypto.name}>
+                                                    {crypto.name}
+                                                </option>
+                                            ))}
+                                        </select>
                                         <input
                                             type="text"
                                             placeholder="amount"
