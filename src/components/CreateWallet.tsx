@@ -106,7 +106,7 @@ const CreateWallet: React.FC = () => {
                           Password
                         </label>
                         <input
-                            type="text"
+                            type="password"
                             name="password"
                             onChange={(e) => setPassword(e.target.value)}
 
