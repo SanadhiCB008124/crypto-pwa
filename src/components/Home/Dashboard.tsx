@@ -9,29 +9,27 @@ const Dashboard: React.FC = () => {
         <div
             className=" w-full bg-primary h-full  flex-auto items-center justify-center p-10 overflow-hidden text-white  "
         >
-            {/**}  <MobileNav/>**/}
-
                         <div className="m-10">
 
-                            <div
-                                className="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y"
-
-                            >
-                                <div className="p-5 text-primary-500 rounded bg-black"
-
+                            <div className="grid grid-cols-12 gap-6 mt-5">
+                                <a
+                                    className="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y "
+                                    href="#"
                                 >
-                                    <div className="mt-3 text-3xl text-base font-bold leading-8">Your Wallet Balance</div>
-                                    <div className="flex justify-between ">
 
-                                        <div className="mt-3 text-3xl leading-8 text-white">$ 6, 200.34</div>
+                                    <div className="p-5 text-primary-500 rounded bg-black"
 
+                                    >
+                                        <div className="mt-3 text-3xl text-base font-bold leading-8">Your Wallet Balance</div>
+                                        <div className="flex justify-between ">
+
+                                            <div className="mt-3 text-3xl leading-8 text-white">$ 6, 200.34</div>
+
+
+                                        </div>
 
                                     </div>
-
-                                </div>
-                            </div>
-
-                            <div className="grid grid-cols-12 gap-6 mt-5">
+                                </a>
                                 <a
                                     className="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y "
                                     href="#"
@@ -53,6 +51,8 @@ const Dashboard: React.FC = () => {
                                         </div>
                                     </div>
                                 </a>
+
+
 
                                 <a
                                     className="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y "

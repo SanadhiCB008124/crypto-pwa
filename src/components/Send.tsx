@@ -1,10 +1,20 @@
 
 
 import bgImg from "../assets/splash4.jpg"
-import { Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import styles from "../style.tsx";
 
+
+
+
+
 function Send() {
+    const navigate = useNavigate();
+
+    const showSuccessMessage = () => {
+
+        navigate("/successMessage");
+    }
 
     return (
 
@@ -64,7 +74,7 @@ function Send() {
 
                                         <button
                                             className="border border-primary-500 bg-green-950 text-white rounded-lg py-3 font-semibold"
-                                            // onClick={onSubmit} // You can add your form submission logic here
+                                           onClick={showSuccessMessage}
                                         >
                                             Continue
                                         </button>

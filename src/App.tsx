@@ -20,45 +20,47 @@ import Get from "./components/Get.tsx";
 import Card from "./components/Card.tsx";
 import Receive from './components/Receive.tsx';
 import Test from "./components/Test.tsx";
+import SuccessMessage from "./components/SuccessMessage.tsx";
+import { useAuth } from './AuthContext.tsx';
 function App() {
+
+    const { user } = useAuth();
     return (
 
 
-            <div className="bg-primary  w-full overflow-hidden  ">
-                <div className={`${styles.paddingX} ${styles.flexCenter}  `}>
-
-                    <div className={`${styles.boxWidth} `}>
-                        <Navbar/>
-                    </div>
-
-                </div>
-                <div>
-                    <MobileNav/>
-                </div>
+        <div className="bg-primary w-full overflow-hidden">
+            <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+                {user && <div className={`${styles.boxWidth}`}>
+                    <Navbar />
+                </div>}
+            </div>
+            {user && <div><MobileNav /></div>}
 
 
 
-                <div className={`bg-primary ${styles.flexStart}`}>
-                    <div className={`${styles.boxWidth}`}>
-                        <Routes>
-                            <Route path="/home" element={<Home />} />
-                            <Route path="/send" element={<Send />} />
-                            <Route path="/swap" element={<Swap />} />
-                            <Route path="/buy" element={<Buy />} />
-                            <Route path="/get" element={<Get/>} />
-                            <Route path="/login" element={<Login/>} />
-                            <Route path="/createWallet" element={<CreateWallet/>} />
-                            <Route path="/camera" element={<Camera/>} />
-                            <Route path="/barcodescanner" element={<BarcodeScanner/>} />
-                            <Route path="/profile" element={<Profile/>} />
-                            <Route path="/card" element={<Card/>} />
-                            <Route path="/buy2/:cryptoName" element={<Buy2/>} />
-                            <Route path="/receive/:cryptoName" element={<Receive/>} />
-                            <Route path="/test" element={<Test/>}></Route>
-                        </Routes>
-                    </div>
+
+            <div className={`bg-primary ${styles.flexStart}`}>
+                <div className={`${styles.boxWidth}`}>
+                    <Routes>
+                        <Route path="/home" element={<Home />} />
+                        <Route path="/send" element={<Send />} />
+                        <Route path="/swap" element={<Swap />} />
+                        <Route path="/buy" element={<Buy />} />
+                        <Route path="/get" element={<Get/>} />
+                        <Route path="/login" element={<Login/>} />
+                        <Route path="/createWallet" element={<CreateWallet/>} />
+                        <Route path="/camera" element={<Camera/>} />
+                        <Route path="/barcodescanner" element={<BarcodeScanner/>} />
+                        <Route path="/profile" element={<Profile/>} />
+                        <Route path="/card" element={<Card/>} />
+                        <Route path="/buy2/:cryptoName" element={<Buy2/>} />
+                        <Route path="/receive/:cryptoName" element={<Receive/>} />
+                        <Route path="/test" element={<Test/>} />
+                        <Route path="/successMessage" element={<SuccessMessage/>} />
+                    </Routes>
                 </div>
             </div>
+        </div>
 
     );
 }

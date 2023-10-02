@@ -6,12 +6,25 @@ import { auth } from "../firebase";
 import bgImg from "../assets/splash4.jpg"
 import styles from "../style.tsx";
 
+
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
+    const showWelcomeNotification = () => {
+        if ('serviceWorker' in navigator && 'PushManager' in window) {
+            navigator.serviceWorker.ready.then((registration) => {
+                const title = "Welcome to Zenith Pay";
+                const options = {
+                    body: "You are now logged in.",
+                    icon:coin, // Replace with your icon path
+                };
 
+                registration.showNotification(title, options);
+            });
+        }
+    };
   const handleLogin = async () => {
     event?.preventDefault();
     try {
@@ -19,12 +32,15 @@ const Login: React.FC = () => {
 
       const user = userCredential.user;
       console.log(user);
+      showWelcomeNotification();
       navigate("/home");
 
     } catch (error) {
      console.log(error);
     }
   };
+
+
 
   return (
       <div>
@@ -94,7 +110,7 @@ const Login: React.FC = () => {
                                       </div>
                                       <div className="mb-12 pt-1 text-center">
                                           <button
-                                              className=" text w-full white bg-black border-2 border-primary-500 py-3 px-4 rounded-xl"
+                                              className=" text w-full hover:text-primary-500 white bg-black border-2 border-primary-500 py-3 px-4 rounded-xl"
                                               type="button"
                                               onClick={handleLogin}
                                               data-te-ripple-init

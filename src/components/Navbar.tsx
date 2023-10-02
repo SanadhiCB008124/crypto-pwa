@@ -1,5 +1,5 @@
 
-import logo from "../assets/coin.jpg";
+import logo from "../assets/logo.png";
 import {useAuth} from "../AuthContext.tsx";
 
 import close from "../assets/close.svg";
@@ -67,9 +67,16 @@ export default function Navbar() {
 
 
                         <li  className="font-poppins text-primary-500 hover:text-white  font-small cursor-pointer text-[16px]
-                                ">Register</li>
+                                "><NavLink to="/createWallet" >
+                            <label>Register</label>
+                        </NavLink>
+                        </li>
                         <li  className="font-poppins text-primary-500 hover:text-white active:text-white font-small cursor-pointer text-[16px]
-                                ">Login</li>
+                                ">
+                            <NavLink to="/login" >
+                            <label>Login</label>
+                        </NavLink>
+                        </li>
 
                     </>
                 )  }
@@ -143,9 +150,15 @@ export default function Navbar() {
 
 
                                 <li  className="font-poppins text-primary-500 font-medium cursor-pointer text-[16px] pr-4 pb-4 ml-0
-                              ">Register</li>
+                              "><NavLink to="/createWallet" >
+                                    <label>Register</label>
+                                </NavLink></li>
                                 <li className="font-poppins text-primary-500 font-medium cursor-pointer text-[16px] pr-4 pb-4 ml-0
-                              ">Login</li>
+                              "><NavLink to="/login" >
+                                    <label>Login</label>
+                                </NavLink>
+
+                                 </li>
 
                             </>
                         )  }

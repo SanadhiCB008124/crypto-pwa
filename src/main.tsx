@@ -13,9 +13,19 @@ if(!("BarcodeDetector" in window)){
 }
 
 
-Notification.requestPermission().then((result) => {
-    console.log('notification permission', result)
-});
+if ('serviceWorker' in navigator && 'PushManager' in window) {
+    navigator.serviceWorker.ready.then(() => {
+        if (Notification.permission !== 'granted') {
+            // Request permission to show notifications
+            Notification.requestPermission().then((permission) => {
+                if (permission === 'granted') {
+                  console.log('permission granted')
+                }
+            });
+        }
+    });
+}
+
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
