@@ -2,7 +2,7 @@ import './App.css';
 
 import Navbar from "./components/Navbar.tsx";
 import Home from "./components/Home/Home.tsx"; // Import your Home component
-import {Routes, Route, Navigate,} from "react-router-dom";
+import {Routes, Route, } from "react-router-dom";
 
 import styles from './style.tsx';
 import Send from "./components/Send.tsx";
