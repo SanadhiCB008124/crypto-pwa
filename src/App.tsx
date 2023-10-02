@@ -3,7 +3,7 @@ import './App.css';
 
 import Navbar from "./components/Navbar.tsx";
 import Home from "./components/Home/Home.tsx"; // Import your Home component
-import {Routes, Route, } from "react-router-dom";
+import {Routes, Route, Navigate,} from "react-router-dom";
 
 import styles from './style.tsx';
 import Send from "./components/Send.tsx";
@@ -26,19 +26,17 @@ import AboutUs from "./components/About.tsx";
 function App() {
     const { user } = useAuth();
 
-    // const handlePage = () => {
-    //     if (!user) {
-    //         console.log('user not authenticated');
-    //         return <Navigate to="/login" />;
-        // }
-    // };
+    const handlePage = () => {
+        if (!user) {
+             console.log('user not authenticated');
+           return <Navigate to="/login" />;
+      }
+    };
 
 
     return (
-
-
         <div className="bg-primary w-full overflow-hidden">
-            {/*{handlePage()}*/}
+            {handlePage()}
             <div className={`${styles.paddingX} ${styles.flexCenter}`}>
                 {user && (
                     <div className={`${styles.boxWidth}`}>
