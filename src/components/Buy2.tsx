@@ -2,11 +2,26 @@
 
 import bgImg from "../assets/splash4.jpg"
 import {Link, useParams} from 'react-router-dom';
+import coin from "*.png";
 
 
 
 function Buy2() {
     const { cryptoName } = useParams();
+
+    const showNotification = () => {
+        if ('serviceWorker' in navigator && 'PushManager' in window) {
+            navigator.serviceWorker.ready.then((registration) => {
+                const title = "You have bought crypto successfully !";
+                const options = {
+                    body: "success",
+                    icon:coin, // Replace with your icon path
+                };
+
+                registration.showNotification(title, options);
+            });
+        }
+    };
     return (
 
         <div
@@ -64,9 +79,9 @@ function Buy2() {
                                     />
                                     <button
                                         className="border border-primary-500 bg-green-950 text-white rounded-lg py-3 font-semibold"
-                                        // onClick={onSubmit} // You can add your form submission logic here
+                                         onClick={showNotification}
                                     >
-                                        Continue
+                                        Confirm
                                     </button>
                                 </form>
                             </div>

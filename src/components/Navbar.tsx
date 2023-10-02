@@ -150,7 +150,7 @@ export default function Navbar() {
 
 
 
-                               
+
 
                                 <li className="font-poppins text-primary-500 hover:text-white font-medium cursor-pointer text-[16px] pr-4 pb-4 ml-0
                               ">

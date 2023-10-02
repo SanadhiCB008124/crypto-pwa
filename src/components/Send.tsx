@@ -5,7 +5,8 @@ import {Link, useNavigate} from 'react-router-dom';
 import styles from "../style.tsx";
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../firebase';
-import {useEffect, useState} from "react"; // Import the initialized Firestore instance
+import {useEffect, useState} from "react";
+import coin from "*.png"; // Import the initialized Firestore instance
 
 
 type Crypto = {
@@ -45,8 +46,23 @@ function Send() {
     }, []);
     const navigate = useNavigate();
 
+
+    const showSuccessNotification = () => {
+        if ('serviceWorker' in navigator && 'PushManager' in window) {
+            navigator.serviceWorker.ready.then((registration) => {
+                const title = "Your transaction is successful";
+                const options = {
+
+                    icon:coin,
+                };
+
+                registration.showNotification(title, options);
+            });
+        }
+    };
     const showSuccessMessage = () => {
 
+        showSuccessNotification();
         navigate("/successMessage");
     }
 
