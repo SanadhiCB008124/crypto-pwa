@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { VitePWA } from 'vite-plugin-pwa'
+import {ManifestOptions, VitePWA} from 'vite-plugin-pwa'
 
-const manifestForPlugin ={
+const manifestForPlugin :Partial<ManifestOptions> ={
   name: "Sana-crypto-pwa",
   short_name: "Sana-crypto-pwa",
   start_url: "/Sana-crypto-pwa/",
