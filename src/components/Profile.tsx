@@ -159,7 +159,7 @@ function Camera() {
             .then(() => {
                 // Sign-out successful.
                 console.log('User signed out');
-                navigate("/login");
+                navigate("/");
             })
             .catch((error) => {
                 // An error happened.
