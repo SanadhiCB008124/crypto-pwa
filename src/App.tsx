@@ -30,13 +30,13 @@ function App() {
     return (
         <div className="bg-primary w-full overflow-hidden">
 
-            {user && (
+
                 <div className={`${styles.paddingX} ${styles.flexCenter}`}>
                     <div className={`${styles.boxWidth}`}>
                         <Navbar />
                     </div>
                 </div>
-            )}
+
             <div>
                 {user && <MobileNav />}
             </div>
@@ -53,7 +53,7 @@ function App() {
                         <Route path="/swap" element={<Swap />} />
                         <Route path="/buy" element={<Buy />} />
                         <Route path="/get" element={<Get/>} />
-                        <Route path="/login" element={<Login/>} />
+                    
                         <Route path="/createWallet" element={<CreateWallet/>} />
                         <Route path="/camera" element={<Camera/>} />
                         <Route path="/barcodescanner" element={<BarcodeScanner/>} />

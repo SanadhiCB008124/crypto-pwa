@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react'
 import {ManifestOptions, VitePWA} from 'vite-plugin-pwa'
 
 const manifestForPlugin :Partial<ManifestOptions> ={
-  name: "Sana-crypto-pwa",
-  short_name: "Sana-crypto-pwa",
+  name: "crypto-pwa",
+  short_name: "crypto-pwa",
   start_url: "/",
   scope: "./",
   display: "standalone",
